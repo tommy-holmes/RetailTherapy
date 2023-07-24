@@ -1,0 +1,257 @@
+#usda 1.0
+(
+    defaultPrim = "Store"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+reorder rootPrims = ["Store", "Materials"]
+
+def Xform "Store"
+{
+    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Item_1", "Item_2", "Item_3", "Materials", "Bottle"]
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Cube "Ceiling" (
+        active = false
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Store/Materials/WoodPlank> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 10
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (0.9999998, 2.2204459e-16, 0.99999994)
+        float3 xformOp:translate = (-1.1244295e-10, 4, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "MaplePlywood" (
+            active = true
+            prepend references = @MaplePlywood.usdz@
+        )
+        {
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Basecolor"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "MaterialXPreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (207.5, 199)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+        }
+    }
+
+    def Cube "Table_3" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
+        rel material:binding = </Store/Materials/MaplePlywood> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (5, 5, 20)
+        float3 xformOp:translate = (-2.6194546, 0.5, 1.3009415)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Table_2" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
+        rel material:binding = </Store/Materials/MaplePlywood> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        float3 xformOp:scale = (5, 5, 20)
+        float3 xformOp:translate = (0, 0.5, -1.8285728)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Table_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
+        rel material:binding = </Store/Materials/MaplePlywood> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (5, 5, 20)
+        float3 xformOp:translate = (2.474279, 0.5, 1.3009415)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Floor" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Store/Materials/GlossyBlackWoodPlank> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 10
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (0.9999998, 2.2204459e-16, 0.99999994)
+        float3 xformOp:translate = (-1.1244295e-10, 1.1920929e-7, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Wall_E" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+    )
+    {
+        rel material:binding = </Store/Materials/WoodPlank> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (0.70710677, 0, 0.7071067, 0)
+        float3 xformOp:scale = (50, 20, 2.220446e-16)
+        float3 xformOp:translate = (-5, 2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Wall_W" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+    )
+    {
+        rel material:binding = </Store/Materials/WoodPlank> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (0.70710677, 0, 0.7071067, 0)
+        float3 xformOp:scale = (50, 20, 2.220446e-16)
+        float3 xformOp:translate = (5, 2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Wall_N" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Store/Materials/WoodPlank> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (50.000008, 20, 2.220446e-16)
+        float3 xformOp:translate = (0, 2, 5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Wall_S" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["Wall_2", "DefaultMaterial"]
+        rel material:binding = </Store/Materials/WoodPlank> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (50, 20, 2.220446e-16)
+        float3 xformOp:translate = (0, 2, -5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Materials" (
+        active = true
+        references = @Materials.usda@
+    )
+    {
+        reorder nameChildren = ["WoodPlank", "MaplePlywood", "GlossyBlackWoodPlank"]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+    }
+
+    def Xform "Item_1"
+    {
+        float3 xformOp:translate = (0, 1.5, -3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
+        {
+            uniform token info:id = "RealityKitContent.CustomizableItemComponent"
+        }
+    }
+
+    def Xform "Item_2"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 1.5, -1.8013959)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
+        {
+            uniform token info:id = "RealityKitContent.CustomizableItemComponent"
+        }
+    }
+
+    def Xform "Item_3"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 1.5, -3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
+        {
+            uniform token info:id = "RealityKitContent.CustomizableItemComponent"
+        }
+    }
+}
+

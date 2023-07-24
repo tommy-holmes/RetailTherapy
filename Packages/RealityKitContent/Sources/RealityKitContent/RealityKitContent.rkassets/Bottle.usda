@@ -1,0 +1,33 @@
+#usda 1.0
+(
+    defaultPrim = "Bottle"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Bottle"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.01, 0.01, 0.01)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "bottle" (
+        active = true
+        prepend references = @bottle.usd@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "bottle_cork" (
+        active = true
+        prepend references = @bottle_cork.usd@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

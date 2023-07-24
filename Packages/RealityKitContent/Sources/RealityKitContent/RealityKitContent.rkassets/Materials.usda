@@ -1,0 +1,144 @@
+#usda 1.0
+(
+    defaultPrim = "Materials"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Materials"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "WoodPlank" (
+        active = true
+        references = @WoodPlank.usdz@
+    )
+    {
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+        over "Basecolor"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "Roughness"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "Metallic"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "MaterialXPreviewSurface"
+        {
+            float2 ui:nodegraph:node:size = (207.5, 199)
+        }
+
+        over "add"
+        {
+            float2 ui:nodegraph:node:size = (61.5, 36.5)
+        }
+
+        over "multiply"
+        {
+            float2 ui:nodegraph:node:size = (60, 36)
+        }
+
+        over "Normal"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+    }
+
+    def "MaplePlywood" (
+        active = true
+        references = @MaplePlywood.usdz@
+    )
+    {
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+        over "Basecolor"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "Roughness"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "Metallic"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "MaterialXPreviewSurface"
+        {
+            float2 ui:nodegraph:node:size = (207.5, 199)
+        }
+
+        over "add"
+        {
+            float2 ui:nodegraph:node:size = (61.5, 36.5)
+        }
+
+        over "multiply"
+        {
+            float2 ui:nodegraph:node:size = (60, 36)
+        }
+
+        over "Normal"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+    }
+
+    def "GlossyBlackWoodPlank" (
+        active = true
+        prepend references = @GlossyBlackWoodPlank.usdz@
+    )
+    {
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+        over "Basecolor"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "Roughness"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "Metallic"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "MaterialXPreviewSurface"
+        {
+            float2 ui:nodegraph:node:size = (207.5, 199)
+        }
+
+        over "add"
+        {
+            float2 ui:nodegraph:node:size = (61.5, 36.5)
+        }
+
+        over "multiply"
+        {
+            float2 ui:nodegraph:node:size = (60, 36)
+        }
+
+        over "Normal"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+    }
+}
+
