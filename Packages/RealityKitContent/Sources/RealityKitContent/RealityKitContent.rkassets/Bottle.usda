@@ -5,10 +5,14 @@
     upAxis = "Y"
 )
 
-def Xform "Bottle"
+def Xform "Bottle" (
+    customData = {
+        float3 rotationEulerHint = (-1.5707964, 0, 0)
+    }
+)
 {
-    quatf xformOp:orient = (1, 0, 0, 0)
-    float3 xformOp:scale = (0.01, 0.01, 0.01)
+    quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+    float3 xformOp:scale = (0.005, 0.005, 0.005)
     float3 xformOp:translate = (0, 0, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 

@@ -10,7 +10,7 @@ reorder rootPrims = ["Store", "Materials"]
 def Xform "Store"
 {
     reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Item_1", "Item_2", "Item_3", "Materials", "Bottle"]
-    float3 xformOp:translate = (0, 0, 0)
+    float3 xformOp:translate = (0, 0, -3)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     def Cube "Ceiling" (
@@ -88,6 +88,20 @@ def Xform "Store"
         float3 xformOp:scale = (5, 5, 20)
         float3 xformOp:translate = (-2.6194546, 0.5, 1.3009415)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+            }
+        }
     }
 
     def Cube "Table_2" (
@@ -103,6 +117,20 @@ def Xform "Store"
         float3 xformOp:scale = (5, 5, 20)
         float3 xformOp:translate = (0, 0.5, -1.8285728)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+            }
+        }
     }
 
     def Cube "Table_1" (
@@ -119,6 +147,20 @@ def Xform "Store"
         float3 xformOp:scale = (5, 5, 20)
         float3 xformOp:translate = (2.474279, 0.5, 1.3009415)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+            }
+        }
     }
 
     def Cube "Floor" (
@@ -228,8 +270,13 @@ def Xform "Store"
         }
     }
 
-    def Xform "Item_2"
+    def Xform "Item_2" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
     {
+        rel material:binding = </Store/Materials/MaplePlywood> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 1.5, -1.8013959)
@@ -245,7 +292,7 @@ def Xform "Store"
     {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 1.5, -3)
+        float3 xformOp:translate = (0, 1.5, -0.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"

@@ -9,6 +9,11 @@ public enum ShopItem: String, Codable {
 public struct CustomizableItemComponent: Component, Codable {
     var itemType: ShopItem = .bottle
 
-    public init() {
+    public init() { }
+}
+
+public extension CustomizableItemComponent {
+    var assetName: String {
+        itemType.rawValue.capitalized
     }
 }

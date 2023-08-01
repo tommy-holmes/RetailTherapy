@@ -5,7 +5,7 @@ import RealityKitContent
 struct ImmersiveView: View {
     @State private var model = StoreModel()
     @State private var attatchmentsProvider = AttatchmentsProvider()
-//    @State private var subscriptions: [EventSubscription] = []
+    @State private var subscriptions: [EventSubscription] = []
     
     static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
     static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
@@ -13,12 +13,18 @@ struct ImmersiveView: View {
     var body: some View {
         RealityView { content, _ in
             do {
+                subscriptions.append(content.subscribe(
+                    to: ComponentEvents.DidAdd.self,
+                    componentType: CustomizableItemComponent.self
+                ) { event in
+                    createItemModel(for: event.entity)
+                })
+                
                 let storeEntity = try await Entity(named: "Store", in: realityKitContentBundle)
                 model.rootEntity = storeEntity
                 
                 content.add(storeEntity)
                 content.add(generateSkybox())
-                
             } catch {
                 print("Error in RealityView's make: \(error)")
             }
@@ -29,7 +35,7 @@ struct ImmersiveView: View {
                 guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
                 guard let attachmentEntity = attatchments.entity(for: component.attachmentTag) else { return }
                 
-                content.add(attachmentEntity)
+                model.rootEntity?.addChild(attachmentEntity)
             }
             
         } attachments: {
@@ -37,6 +43,31 @@ struct ImmersiveView: View {
                 pair.view
             }
         }
+    }
+    
+    private func createItemModel(for entity: Entity) {
+        guard entity.components[CustomizableItemRuntimeComponent.self] == nil else { return }
+        guard let item = entity.components[CustomizableItemComponent.self] else { return }
+        
+        let tag: ObjectIdentifier = entity.id
+        
+        Task {
+            let bottleEntity = try! await Entity(named: "Bottle", in: realityKitContentBundle)
+            await entity.children.append(bottleEntity, preservingWorldTransform: false)
+//            bottleEntity.components[ModelComponent.self]
+        }
+        
+//        let view = Model3D(named: item.assetName) { phase in
+//            switch phase {
+//            case .success(let model):
+//                model
+//                    .resizable()
+//            default:
+//                EmptyView()
+//            }
+//        }.tag(tag)
+        entity.components[CustomizableItemRuntimeComponent.self] = CustomizableItemRuntimeComponent(attachmentTag: tag)
+//        attatchmentsProvider.attachments[tag] = AnyView(view)
     }
     
     private func generateSkybox() -> Entity {
