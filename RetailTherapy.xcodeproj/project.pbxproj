@@ -11,7 +11,6 @@
 		A66FED732A6E914000AAC4F6 /* AttatchmentsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */; };
 		A66FED752A6E98E000AAC4F6 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED742A6E98E000AAC4F6 /* StoreModel.swift */; };
 		A66FED772A6E9D0E00AAC4F6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED762A6E9D0E00AAC4F6 /* Components.swift */; };
-		A69556D92A6ED11F00B38B6F /* Bottle.usda in Resources */ = {isa = PBXBuildFile; fileRef = A69556D82A6ED11F00B38B6F /* Bottle.usda */; };
 		A6FD78D42A6937B5004B2FFB /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = A6FD78D32A6937B5004B2FFB /* RealityKitContent */; };
 		A6FD78D62A6937B5004B2FFB /* RetailTherapyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */; };
 		A6FD78D82A6937B5004B2FFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D72A6937B5004B2FFB /* ContentView.swift */; };
@@ -26,7 +25,6 @@
 		A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttatchmentsProvider.swift; sourceTree = "<group>"; };
 		A66FED742A6E98E000AAC4F6 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		A66FED762A6E9D0E00AAC4F6 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
-		A69556D82A6ED11F00B38B6F /* Bottle.usda */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bottle.usda; path = Packages/RealityKitContent/Sources/RealityKitContent/RealityKitContent.rkassets/Bottle.usda; sourceTree = SOURCE_ROOT; };
 		A6FD78CE2A6937B5004B2FFB /* RetailTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetailTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD78D22A6937B5004B2FFB /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetailTherapyApp.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				A66FED742A6E98E000AAC4F6 /* StoreModel.swift */,
 				A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */,
 				A6FD78DB2A6937B5004B2FFB /* ImageBasedLight.exr */,
-				A69556D82A6ED11F00B38B6F /* Bottle.usda */,
 				A6FD78DD2A6937B6004B2FFB /* Assets.xcassets */,
 				A6FD78DF2A6937B6004B2FFB /* Preview Content */,
 			);
@@ -161,7 +158,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69556D92A6ED11F00B38B6F /* Bottle.usda in Resources */,
 				A6FD78DE2A6937B6004B2FFB /* Assets.xcassets in Resources */,
 				A6FD78E12A6937B6004B2FFB /* Preview Assets.xcassets in Resources */,
 				A6FD78DC2A6937B5004B2FFB /* ImageBasedLight.exr in Resources */,

@@ -11,6 +11,7 @@ def Xform "Bottle" (
     }
 )
 {
+    reorder nameChildren = ["bottle", "bottle_cork", "Scratched_Metallic_Paint", "Material"]
     quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
     float3 xformOp:scale = (0.005, 0.005, 0.005)
     float3 xformOp:translate = (0, 0, 0)
@@ -18,20 +19,148 @@ def Xform "Bottle" (
 
     def "bottle" (
         active = true
-        prepend references = @bottle.usd@
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        references = @bottle.usd@
     )
     {
+        reorder nameChildren = ["Body_Material", "Geom", "Materials"]
+        rel material:binding = </Bottle/bottle/Materials/STL_material> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
         float3 xformOp:scale = (1, 1, 1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            reorder nameChildren = ["Material", "STL_material"]
+            over "STL_material"
+            {
+                prepend token outputs:mtlx:surface.connect = </Bottle/bottle/Materials/STL_material/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Bottle/bottle/Materials/STL_material/surfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                over "surfaceShader" (
+                    active = false
+                )
+                {
+                    color3f inputs:diffuseColor = (0.10120123, 0.19340688, 0.351771) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:emissiveColor = (0.10120123, 0.19340688, 0.351771) (
+                        colorSpace = "srgb_texture"
+                    )
+                    float inputs:metallic = 0.75
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness
+                    color3f inputs:diffuseColor = (0.088454835, 0.12950721, 0.23846039) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:emissiveColor = (0.11076563, 0.20753813, 0.36014032) (
+                        colorSpace = "srgb_texture"
+                    )
+                    float inputs:ior
+                    float inputs:metallic = 0.75
+                    float3 inputs:normal
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold
+                    float inputs:roughness
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-300.6211, 56.71875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 27
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = []
+                }
+            }
+
+            def Material "Material"
+            {
+                prepend token outputs:mtlx:surface.connect = </Bottle/bottle/Materials/Material/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (508.48047, 99.078125)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 14
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = None
+                    float inputs:clearcoatRoughness
+                    color3f inputs:diffuseColor.connect = </Bottle/bottle/Materials/Material/TiledImage.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal
+                    float inputs:opacity
+                    float inputs:roughness
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (273.28516, 83.34375)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 19
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Constant"
+                {
+                    uniform token info:id = "ND_constant_filename"
+                    asset inputs:value = @moo.png@
+                    asset outputs:out
+                    float2 ui:nodegraph:node:pos = (-189.2461, 26.144531)
+                    float2 ui:nodegraph:node:size = (142.5, 53)
+                    int ui:nodegraph:node:stackingOrder = 5
+                }
+
+                def Shader "TiledImage"
+                {
+                    uniform token info:id = "ND_tiledimage_color3"
+                    prepend asset inputs:file.connect = </Bottle/bottle/Materials/Material/Constant.outputs:out>
+                    string inputs:filtertype
+                    float2 inputs:realworldimagesize
+                    float2 inputs:realworldtilesize
+                    float2 inputs:texcoord
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-20.671875, 49.996094)
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                    int ui:nodegraph:node:stackingOrder = 10
+                }
+            }
+        }
     }
 
     def "bottle_cork" (
         active = true
-        prepend references = @bottle_cork.usd@
+        references = @bottle_cork.usd@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "STL_material"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "surfaceShader"
+                {
+                    color3f inputs:diffuseColor = (0.28160465, 0.28160465, 0.28160465) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:emissiveColor = (0.843533, 0.843533, 0.843533) (
+                        colorSpace = "srgb_texture"
+                    )
+                    float inputs:metallic = 1
+                }
+            }
+        }
     }
 }
 

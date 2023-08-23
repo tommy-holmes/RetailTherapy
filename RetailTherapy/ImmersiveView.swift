@@ -57,7 +57,7 @@ struct ImmersiveView: View {
         
         Task {
             let bottleEntity = try! await Entity(named: "Bottle", in: realityKitContentBundle)
-            await entity.children.append(bottleEntity, preservingWorldTransform: false)
+            await entity.children.append(bottleEntity)
 //            bottleEntity.components[ModelComponent.self]
         }
         

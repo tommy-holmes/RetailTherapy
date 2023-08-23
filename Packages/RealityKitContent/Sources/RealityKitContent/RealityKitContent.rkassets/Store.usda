@@ -9,7 +9,7 @@ reorder rootPrims = ["Store", "Materials"]
 
 def Xform "Store"
 {
-    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Item_1", "Item_2", "Item_3", "Materials", "Bottle"]
+    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Item_1", "Item_2", "Item_3", "Table_3", "Materials"]
     float3 xformOp:translate = (0, 0, -3)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 

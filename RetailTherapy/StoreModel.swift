@@ -7,4 +7,6 @@ class StoreModel {
     
     var rootEntity: Entity? = nil
     var showImmersiveSpace = false
+    
+    var items: [CustomizableItemRuntimeComponent] = []
 }
