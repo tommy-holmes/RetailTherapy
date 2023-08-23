@@ -6,6 +6,7 @@ struct ImmersiveView: View {
     @State private var model = StoreModel()
     @State private var attatchmentsProvider = AttatchmentsProvider()
     @State private var subscriptions: [EventSubscription] = []
+    @State private var showingCustomize: Bool = false
     
     static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
     static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
@@ -35,7 +36,10 @@ struct ImmersiveView: View {
                 guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
                 guard let attachmentEntity = attatchments.entity(for: component.attachmentTag) else { return }
                 
-                model.rootEntity?.addChild(attachmentEntity)
+                if showingCustomize {
+                    model.rootEntity?.addChild(attachmentEntity)
+                }
+                attachmentEntity.setPosition([-0.75, 0, 0], relativeTo: entity)
             }
             
         } attachments: {
@@ -47,7 +51,7 @@ struct ImmersiveView: View {
     
     private func createItemModel(for entity: Entity) {
         guard entity.components[CustomizableItemRuntimeComponent.self] == nil else { return }
-        guard let item = entity.components[CustomizableItemComponent.self] else { return }
+//        guard let item = entity.components[CustomizableItemComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
         
@@ -57,17 +61,10 @@ struct ImmersiveView: View {
 //            bottleEntity.components[ModelComponent.self]
         }
         
-//        let view = Model3D(named: item.assetName) { phase in
-//            switch phase {
-//            case .success(let model):
-//                model
-//                    .resizable()
-//            default:
-//                EmptyView()
-//            }
-//        }.tag(tag)
+        let view = CustomizeView()
+        
         entity.components[CustomizableItemRuntimeComponent.self] = CustomizableItemRuntimeComponent(attachmentTag: tag)
-//        attatchmentsProvider.attachments[tag] = AnyView(view)
+        attatchmentsProvider.attachments[tag] = AnyView(view)
     }
     
     private func generateSkybox() -> Entity {
