@@ -32,8 +32,7 @@
     "objectMetadataList" : [
       [
         "88C5B37B-537F-4D91-9349-4C08E80FD7F0",
-        "Materials",
-        "MaplePlywood"
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -41,7 +40,8 @@
       },
       [
         "88C5B37B-537F-4D91-9349-4C08E80FD7F0",
-        "Materials"
+        "Materials",
+        "MaplePlywood"
       ],
       {
         "isExpanded" : true,
@@ -65,7 +65,8 @@
     "objectMetadataList" : [
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle"
+        "Bottle",
+        "bottle_cork"
       ],
       {
         "isExpanded" : true,
@@ -77,6 +78,14 @@
         "bottle",
         "Materials",
         "STL_material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle"
       ],
       {
         "isExpanded" : true,
@@ -98,15 +107,6 @@
         "bottle",
         "Materials",
         "Material"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle",
-        "bottle_cork"
       ],
       {
         "isExpanded" : true,
@@ -189,9 +189,7 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -199,7 +197,9 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -217,6 +217,25 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
+        "Item_2"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "room",
+        "Mesh_grp"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
         "Item_1"
       ],
       {
@@ -225,12 +244,12 @@
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "room",
-        "Mesh_grp"
+        "Store",
+        "Table_2"
       ],
       {
         "isExpanded" : true,
-        "isLocked" : false
+        "isLocked" : true
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
@@ -242,33 +261,6 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_S"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Floor"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Table_3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
@@ -291,88 +283,7 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Wall_2"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "room",
-        "Mesh_grp",
-        "Object_grp"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Ceiling"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Table_2"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Table_1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
         "Cube"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Item_3"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Item_2"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Cube_1"
       ],
       {
         "isExpanded" : false,
@@ -390,12 +301,29 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "room",
-        "Mesh_grp"
+        "Cube_1"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Floor"
       ],
       {
         "isExpanded" : true,
-        "isLocked" : false
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Item_3"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
@@ -409,10 +337,82 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
+        "Wall_S"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
         "Wall_N"
       ],
       {
         "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Table_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Ceiling"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "room",
+        "Mesh_grp"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "room",
+        "Mesh_grp",
+        "Object_grp"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Table_3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_2"
+      ],
+      {
+        "isExpanded" : false,
         "isLocked" : true
       }
     ]

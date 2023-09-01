@@ -44,7 +44,9 @@ struct ImmersiveView: View {
             
         } attachments: {
             ForEach(attatchmentsProvider.sortedTagViewPairs, id: \.tag) { pair in
-                pair.view
+                Attachment(id: pair.tag) {
+                    pair.view
+                }
             }
         }
     }
