@@ -3,12 +3,15 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
+    @Environment(StoreModel.self) private var model
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
 
     @State private var showImmersiveSpace = false
 
     var body: some View {
+        @Bindable var model = model
+        
         NavigationSplitView {
             List {
                 Text("Item")
@@ -16,8 +19,10 @@ struct ContentView: View {
             .navigationTitle("Sidebar")
         } detail: {
             VStack {
-                Model3D(named: "Scene", bundle: realityKitContentBundle)
-                    .padding(.bottom, 50)
+                ColorPicker("Color", selection: $model.selectedColor)
+                    .onChange(of: model.selectedColor) { _, newValue in
+                        model.updateItemMaterial()
+                    }
 
                 Text("Hello, world!")
 

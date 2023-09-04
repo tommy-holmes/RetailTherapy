@@ -3,6 +3,7 @@ import SwiftUI
 struct CustomizeView: View {
     @Environment(\.dismiss) private var dismiss
     
+    // TODO: Make view dynamic in that it know how many attributes that can be coloured on the object
     @State private var corkColor: Color = .white
     @State private var bottleColor: Color = .white
     

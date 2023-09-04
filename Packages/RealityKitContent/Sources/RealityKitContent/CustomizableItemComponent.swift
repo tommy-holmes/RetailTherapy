@@ -8,6 +8,7 @@ public enum ShopItem: String, Codable {
 // CustomizableItemComponent.registerComponent()
 public struct CustomizableItemComponent: Component, Codable {
     var itemType: ShopItem = .bottle
+    public var name: String = ""
 
     public init() { }
 }

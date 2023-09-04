@@ -3,22 +3,23 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
-    @State private var model = StoreModel()
+    @Environment(StoreModel.self) private var model
+    
     @State private var attatchmentsProvider = AttatchmentsProvider()
     @State private var subscriptions: [EventSubscription] = []
-    @State private var showingCustomize: Bool = false
     
-    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
+//    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
     static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
     
     var body: some View {
-        RealityView { content, _ in
+        RealityView { content in
             do {
                 subscriptions.append(content.subscribe(
                     to: ComponentEvents.DidAdd.self,
                     componentType: CustomizableItemComponent.self
                 ) { event in
                     createItemModel(for: event.entity)
+//                    model.selectedItem = event.entity
                 })
                 
                 let storeEntity = try await Entity(named: "Store", in: realityKitContentBundle)
@@ -30,43 +31,39 @@ struct ImmersiveView: View {
                 print("Error in RealityView's make: \(error)")
             }
             
-        } update: { content, attatchments in
+        } update: { content in
+            model.updateItemMaterial()
             
             model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
                 guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
-                guard let attachmentEntity = attatchments.entity(for: component.attachmentTag) else { return }
+//                guard let attachmentEntity = attatchments.entity(for: selectedTag) else { return }
                 
-                if showingCustomize {
-                    model.rootEntity?.addChild(attachmentEntity)
-                }
-                attachmentEntity.setPosition([-0.75, 0, 0], relativeTo: entity)
+//                model.rootEntity?.addChild(attachmentEntity)
+//                attachmentEntity.setPosition([-0.75, 0, 0], relativeTo: entity)
             }
             
-        } attachments: {
-            ForEach(attatchmentsProvider.sortedTagViewPairs, id: \.tag) { pair in
-                Attachment(id: pair.tag) {
-                    pair.view
-                }
+        }
+        .onAppear {
+            if let bodyColor = model.bodyMaterialValue {
+                model.selectedColor = Color(cgColor: bodyColor)
             }
         }
     }
     
     private func createItemModel(for entity: Entity) {
         guard entity.components[CustomizableItemRuntimeComponent.self] == nil else { return }
-//        guard let item = entity.components[CustomizableItemComponent.self] else { return }
+        guard let item = entity.components[CustomizableItemComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
         
         Task {
-            let bottleEntity = try! await Entity(named: "Bottle", in: realityKitContentBundle)
-            await entity.children.append(bottleEntity)
-//            bottleEntity.components[ModelComponent.self]
+            let itemEntity = try! await Entity(named: item.assetName, in: realityKitContentBundle)
+            await entity.children.append(itemEntity)
+            model.items.append(itemEntity)
+            //            bottleEntity.components[ModelComponent.self]
         }
         
-        let view = CustomizeView()
-        
-        entity.components[CustomizableItemRuntimeComponent.self] = CustomizableItemRuntimeComponent(attachmentTag: tag)
-        attatchmentsProvider.attachments[tag] = AnyView(view)
+        entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))
     }
     
     private func generateSkybox() -> Entity {
