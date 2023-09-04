@@ -7,40 +7,46 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
 
-    @State private var showImmersiveSpace = false
-
     var body: some View {
         @Bindable var model = model
         
         NavigationSplitView {
-            List {
-                Text("Item")
+            List(model.items, selection: $model.selectedItem) { item in
+                Text(item.name)
+                    .tag(item)
             }
-            .navigationTitle("Sidebar")
+            .navigationTitle("Shop Items")
+            
         } detail: {
-            VStack {
-                ColorPicker("Color", selection: $model.selectedColor)
-                    .onChange(of: model.selectedColor) { _, newValue in
-                        model.updateItemMaterial()
-                    }
-
-                Text("Hello, world!")
-
-                Toggle("Show ImmersiveSpace", isOn: $showImmersiveSpace)
-                    .toggleStyle(.button)
-                    .padding(.top, 50)
-            }
-            .navigationTitle("Content")
-            .padding()
-        }
-        .onChange(of: showImmersiveSpace) { _, newValue in
-            Task {
-                if newValue {
-                    await openImmersiveSpace(id: "ImmersiveSpace")
-                } else {
-                    await dismissImmersiveSpace()
+            VStack(spacing: 20) {
+                Text(model.selectedItem == nil ? "Choose an item." : "Customise your item.")
+                
+                if model.selectedItem != nil {
+                    ColorPicker("Body Color", selection: $model.selectedColor)
+                        .onChange(of: model.selectedColor) { _, _ in
+                            model.updateItemMaterial()
+                        }
                 }
             }
+            .navigationTitle("Customise \(model.selectedItem?.name ?? "")")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        model.showImmersiveSpace.toggle()
+                        
+                        Task {
+                            if model.showImmersiveSpace {
+                                await openImmersiveSpace(id: "ImmersiveSpace")
+                            } else {
+                                await dismissImmersiveSpace()
+                            }
+                        }
+                    } label: {
+                        Label("View your shop", systemImage: "bag")
+                    }
+                }
+            }
+            .padding()
         }
     }
 }

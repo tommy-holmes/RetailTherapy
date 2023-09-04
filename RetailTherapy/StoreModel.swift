@@ -18,16 +18,19 @@ class StoreModel {
 //        return value
 //    }
     
-    private var bottleMaterial: ShaderGraphMaterial? {
-        rootEntity?.bottle?.shaderGraphMaterial
-    }
+//    func update(selected entity: Entity) {
+//        selectedItem = entity
+//        
+//        if let selectedItemMaterialValue {
+//            selectedColor = Color(cgColor: selectedItemMaterialValue)
+//        }
+//    }
     
     func updateItemMaterial() {
-        guard let bottle = rootEntity?.findEntity(named: "body"),
-                var material = bottle.shaderGraphMaterial
+        guard 
+            let bottle = selectedItem?.findEntity(named: "body"),
+            let material = bottle.shaderGraphMaterial
         else { return }
-        
-        try! material.setParameter(name: "Color", value: .color(UIColor(selectedColor)))
         
         if var component = bottle.modelComponent {
             component.materials = [material]
@@ -45,3 +48,20 @@ fileprivate extension Entity {
         findEntity(named: "Bottle")
     }
 }
+
+//import SwiftData
+
+//protocol ShopItem: AnyObject {
+//    var entity: Entity { get }
+//}
+
+//@Model
+//class ShopItem<T> {
+//    let entity: Entity
+//    var colors: [String: Color]
+//    
+//    init(entity: Entity, colors: [String: Color]) {
+//        self.entity = entity
+//        self.colors = colors
+//    }
+//}

@@ -19,7 +19,6 @@ struct ImmersiveView: View {
                     componentType: CustomizableItemComponent.self
                 ) { event in
                     createItemModel(for: event.entity)
-//                    model.selectedItem = event.entity
                 })
                 
                 let storeEntity = try await Entity(named: "Store", in: realityKitContentBundle)
@@ -55,7 +54,6 @@ struct ImmersiveView: View {
             let itemEntity = try! await Entity(named: item.assetName, in: realityKitContentBundle)
             await entity.children.append(itemEntity)
             model.items.append(itemEntity)
-            //            bottleEntity.components[ModelComponent.self]
         }
         
         entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))
