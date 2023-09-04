@@ -31,7 +31,6 @@ struct ImmersiveView: View {
             }
             
         } update: { content in
-            model.updateItemMaterial()
             
 //            model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
 //                guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }

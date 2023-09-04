@@ -3,13 +3,19 @@ import Observation
 import RealityKit
 import RealityKitContent
 
+enum BottlePart: String {
+    case cork
+    case body
+}
+
 @Observable
 class StoreModel {
     
     var rootEntity: Entity? = nil
     var showImmersiveSpace = false
     var selectedItem: Entity?
-    var selectedColor: Color = .blue
+    var selectedCorkColor: Color = .white
+    var selectedBodyColor: Color = .blue
     
     var items: [Entity] = []
     
@@ -26,19 +32,24 @@ class StoreModel {
 //        }
 //    }
     
-    func updateItemMaterial() {
-        guard 
-            let bottle = selectedItem?.findEntity(named: "body"),
-            let material = bottle.shaderGraphMaterial
+    func updateItemMaterial(for part: BottlePart) {
+        guard
+            let entity = selectedItem?.findEntity(named: part.rawValue),
+            let material = entity.shaderGraphMaterial
         else { return }
         
-        if var component = bottle.modelComponent {
+        if var component = entity.modelComponent {
             component.materials = [material]
-            bottle.components.set(component)
+            entity.components.set(component)
         }
         
-        bottle.update(shaderGraphMaterial: material) { mat in
-            try! mat.setParameter(name: "Color", value: .color(UIColor(selectedColor)))
+        entity.update(shaderGraphMaterial: material) { mat in
+            switch part {
+            case .cork:
+                try! mat.setParameter(name: "Color", value: .color(UIColor(selectedCorkColor)))
+            case .body:
+                try! mat.setParameter(name: "Color", value: .color(UIColor(selectedBodyColor)))
+            }
         }
     }
 }

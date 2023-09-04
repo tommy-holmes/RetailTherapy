@@ -18,14 +18,21 @@ struct ContentView: View {
             .navigationTitle("Shop Items")
             
         } detail: {
-            VStack(spacing: 20) {
-                Text(model.selectedItem == nil ? "Choose an item." : "Customise your item.")
-                
-                if model.selectedItem != nil {
-                    ColorPicker("Body Color", selection: $model.selectedColor)
-                        .onChange(of: model.selectedColor) { _, _ in
-                            model.updateItemMaterial()
-                        }
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text(model.selectedItem == nil ? "Choose an item." : "Customise your item.")
+                    
+                    if model.selectedItem != nil {
+                        ColorPicker("Cork Color", selection: $model.selectedCorkColor)
+                            .onChange(of: model.selectedCorkColor) { _, _ in
+                                model.updateItemMaterial(for: .cork)
+                            }
+                        
+                        ColorPicker("Body Color", selection: $model.selectedBodyColor)
+                            .onChange(of: model.selectedBodyColor) { _, _ in
+                                model.updateItemMaterial(for: .body)
+                            }
+                    }
                 }
             }
             .navigationTitle("Customise \(model.selectedItem?.name ?? "")")
@@ -53,4 +60,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(StoreModel())
 }
