@@ -9,7 +9,7 @@ struct ImmersiveView: View {
     @State private var subscriptions: [EventSubscription] = []
     
 //    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
-    static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
+//    static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
     
     var body: some View {
         RealityView { content in
@@ -34,13 +34,13 @@ struct ImmersiveView: View {
         } update: { content in
             model.updateItemMaterial()
             
-            model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
-                guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
+//            model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
+//                guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
 //                guard let attachmentEntity = attatchments.entity(for: selectedTag) else { return }
                 
 //                model.rootEntity?.addChild(attachmentEntity)
 //                attachmentEntity.setPosition([-0.75, 0, 0], relativeTo: entity)
-            }
+//            }
             
         }
     }

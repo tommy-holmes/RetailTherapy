@@ -27,7 +27,7 @@ class StoreModel {
                 var material = bottle.shaderGraphMaterial
         else { return }
         
-        try! material.setParameter(name: "Color", value: .color(.brown))
+        try! material.setParameter(name: "Color", value: .color(UIColor(selectedColor)))
         
         if var component = bottle.modelComponent {
             component.materials = [material]
@@ -35,7 +35,7 @@ class StoreModel {
         }
         
         bottle.update(shaderGraphMaterial: material) { mat in
-            try! mat.setParameter(name: "Color", value: .color(.brown))
+            try! mat.setParameter(name: "Color", value: .color(UIColor(selectedColor)))
         }
     }
 }
