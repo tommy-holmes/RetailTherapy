@@ -43,11 +43,6 @@ struct ImmersiveView: View {
             }
             
         }
-        .onAppear {
-            if let bodyColor = model.bodyMaterialValue {
-                model.selectedColor = Color(cgColor: bodyColor)
-            }
-        }
     }
     
     private func createItemModel(for entity: Entity) {
