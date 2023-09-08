@@ -31,6 +31,7 @@ struct ImmersiveView: View {
             }
             
         } update: { content in
+            // TODO: Add labels to the shop items
             
 //            model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
 //                guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }

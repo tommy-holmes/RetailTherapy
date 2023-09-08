@@ -11,16 +11,23 @@ enum BottlePart: String {
 @Observable
 class StoreModel {
     
-    var rootEntity: Entity? = nil
+    var rootEntity: Entity?
     var showImmersiveSpace = false
+    // To change to `ShopItem`
     var selectedItem: Entity?
+    
+    // To get rid of:
     var selectedCorkColor: Color = .white
     var selectedBodyColor: Color = .blue
     
+    // To change to `[ShopItem]`
     var items: [Entity] = []
     
-//    var materialValue: CGColor? {
-//        guard case .color(let value) = bottleMaterial?.getParameter(name: "Color") else { return nil }
+//    func getMaterialValue(for part: BottlePart) -> CGColor? {
+//        guard case .color(let value) = selectedItem?
+//            .findEntity(named: part.rawValue)?
+//            .shaderGraphMaterial?
+//            .getParameter(name: "Color") else { return nil }
 //        return value
 //    }
     
@@ -53,26 +60,3 @@ class StoreModel {
         }
     }
 }
-
-fileprivate extension Entity {
-    var bottle: Entity? {
-        findEntity(named: "Bottle")
-    }
-}
-
-//import SwiftData
-
-//protocol ShopItem: AnyObject {
-//    var entity: Entity { get }
-//}
-
-//@Model
-//class ShopItem<T> {
-//    let entity: Entity
-//    var colors: [String: Color]
-//    
-//    init(entity: Entity, colors: [String: Color]) {
-//        self.entity = entity
-//        self.colors = colors
-//    }
-//}
