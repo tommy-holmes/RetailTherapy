@@ -3,7 +3,7 @@ import RealityKitContent
 
 @main
 struct RetailTherapyApp: App {
-    @State private var model = StoreModel()
+//    @State private var model = StoreModel()
     
     init() {
         RealityKitContent.BottleCustomizeSystem.registerSystem()
@@ -13,12 +13,12 @@ struct RetailTherapyApp: App {
         WindowGroup {
             ContentView()
         }
-        .environment(model)
+//        .environment(model)
 
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
         }
-        .environment(model)
+//        .environment(model)
         .immersionStyle(selection: .constant(.full), in: .full)
     }
 }
