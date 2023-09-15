@@ -2,35 +2,12 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct Test: View {
-    @State private var bottle: ShopItem?
-    
-    var body: some View {
-        Group {
-            if let bottle {
-                ForEach(bottle.attributes) { attribute in
-                    attribute
-                }
-            }
-        }
-        .task {
-            do {
-                bottle = try await ShopItem(named: "Bottle") {
-                    Library.Entity(named: "cork") {
-                        Library.Color()
-                    }
-                }
-            } catch { }
-        }
-    }
-}
-
 struct ShopItem {
-    let entity: RealityKit.Entity
+    var entity: RealityKit.Entity
     var entities: [Library.Entity]
     
     init(named name: String, @EntityBuilder entities: () -> [Library.Entity]) async throws {
-        let entity = try await RealityKit.Entity(named: "Bottle", in: realityKitContentBundle)
+        let entity = try await RealityKit.Entity(named: name, in: realityKitContentBundle)
         self.entities = entities().map { $0.withEntity(entity) }
         self.entity = entity
     }
@@ -52,71 +29,13 @@ struct ShopItem {
     }
 }
 
-extension Library {
-    struct Color: ShopItemAttribute {
-        var entity: RealityKit.Entity?
-        var name: String = ""
-        
-        var value: SwiftUI.Color {
-            get {
-                guard
-                    let partEntity = entity?.findEntity(named: name),
-                    let material = partEntity.shaderGraphMaterial
-                else { return .primary }
-                
-                guard case .color(let value) = material.getParameter(name: "Color") else { return .primary }
-                return SwiftUI.Color(cgColor: value)
-            } nonmutating set {
-                
-            }
-        }
-        
-        var body: some View {
-            ColorPicker(name, selection: projectedValue)
-        }
-    }
-}
-
-extension ShopItemAttribute {
-    var projectedValue: Binding<Value> {
-        .init(get: { value }, set: { value = $0 })
-    }
-}
-
-protocol ShopItemAttribute: View, Identifiable {
-    associatedtype Value
-    var entity: RealityKit.Entity? { get }
-    var name: String { get }
-    var value: Value { get nonmutating set }
-}
-
-extension ShopItemAttribute {
-    var id: String { String(describing: self) }
-}
-
-struct AnyShopItemAttribute: ShopItemAttribute {
-    var entity: RealityKit.Entity?
-    var name: String
-    
-    private var _get: () -> Any
-    private var _set: (Any) -> Void
-    
-    var value: Any {
-        get { _get() }
-        nonmutating set { _set(newValue) }
+extension ShopItem: Hashable {
+    static func == (lhs: ShopItem, rhs: ShopItem) -> Bool {
+        lhs.entity == rhs.entity
     }
     
-    private var _body: () -> AnyView
-    var body: some View {
-        _body()
-    }
-    
-    init<T: ShopItemAttribute>(_ attribute: T, entity: RealityKit.Entity?, name: String) {
-        _get = { attribute.value }
-        _set = { attribute.value = $0 as! T.Value }
-        _body = { .init(attribute.body) }
-        self.entity = entity
-        self.name = name
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(entity)
     }
 }
 
@@ -155,105 +74,3 @@ struct AttributeBuilder {
         components
     }
 }
-
-
-//protocol ShopItemPart {
-//    var entity: Entity { get }
-//    var name: String { get }
-//}
-
-////struct AnyShopItem: ShopItem {
-////    typealias Part = Item.Part
-////    
-////    var wrapped: Item
-////    
-////    var parts: [Item.Part : Color]
-////    var entity: Entity
-////    
-////    init(_ wrapped: Item) {
-////        self.wrapped = wrapped
-////        
-////        entity = wrapped.entity
-////        parts = wrapped.parts
-////    }
-////    
-////    mutating func updateColor(for part: Item.Part, to newColor: Color) {
-////        wrapped.updateColor(for: part, to: newColor)
-////    }
-////}
-//
-//struct Bottle: ShopItem {
-//    
-//    enum Part: String, Identifiable, CaseIterable, ShopItemPart {
-//        case body
-//        case cork
-//        
-//        var id: Self { self }
-//        var name: String { rawValue }
-//    }
-//    
-//    let entity: Entity
-//    
-//    var parts: [Part] = Part.allCases
-//    
-//    init() async {
-//        self.entity = try! await Entity(named: "Bottle", in: realityKitContentBundle)
-//        refresh()
-//    }
-//}
-//
-//struct ColorPart: ShopItemPart {
-//    var name: String
-//    var entity: Entity
-//    
-//    var color: Color? {
-//        get {
-//            guard
-//                let partEntity = entity.findEntity(named: name),
-//                let material = partEntity.shaderGraphMaterial
-//            else { return nil }
-//            
-//            if var component = partEntity.modelComponent {
-//                component.materials = [material]
-//                partEntity.components.set(component)
-//            }
-//            
-//            guard case .color(let value) = material.getParameter(name: "Color") else { return nil }
-//            return Color(cgColor: value)
-//        } set {
-//            // tbd
-//        }
-//    }
-//}
-//
-//private extension Entity {
-//    func color(for part: ShopItemPart) -> Color? {
-//        guard
-//            let partEntity = findEntity(named: part.name),
-//            let material = partEntity.shaderGraphMaterial
-//        else { return nil }
-//        
-//        guard case .color(let value) = material.getParameter(name: "Color") else { return nil }
-//        return Color(cgColor: value)
-//    }
-//}
-//
-//private extension ShopItem {
-//    func refresh() {
-//        parts.forEach { part in
-//            guard
-//                let partEntity = entity.findEntity(named: part.name),
-//                let material = partEntity.shaderGraphMaterial
-//            else { return }
-//            
-//            if var component = partEntity.modelComponent {
-//                component.materials = [material]
-//                partEntity.components.set(component)
-//            }
-//            
-//            partEntity.update(shaderGraphMaterial: material) { mat in
-//                try! mat.setParameter(name: "Color", value: .color(UIColor(part.color)))
-//            }
-//        }
-//    }
-//}

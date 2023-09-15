@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A620EE092AAB27820041F2EE /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620EE082AAB27820041F2EE /* ShopItem.swift */; };
+		A631EF1A2AB46B52000C6C28 /* ShopItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */; };
 		A66FED732A6E914000AAC4F6 /* AttatchmentsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */; };
 		A66FED752A6E98E000AAC4F6 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED742A6E98E000AAC4F6 /* StoreModel.swift */; };
 		A66FED772A6E9D0E00AAC4F6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED762A6E9D0E00AAC4F6 /* Components.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		A620EE082AAB27820041F2EE /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
+		A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemAttribute.swift; sourceTree = "<group>"; };
 		A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttatchmentsProvider.swift; sourceTree = "<group>"; };
 		A66FED742A6E98E000AAC4F6 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		A66FED762A6E9D0E00AAC4F6 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				A66FED762A6E9D0E00AAC4F6 /* Components.swift */,
 				A66FED742A6E98E000AAC4F6 /* StoreModel.swift */,
 				A620EE082AAB27820041F2EE /* ShopItem.swift */,
+				A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */,
 				A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */,
 				A6FD78DB2A6937B5004B2FFB /* ImageBasedLight.exr */,
 				A6FD78DD2A6937B6004B2FFB /* Assets.xcassets */,
@@ -178,6 +181,7 @@
 				A6FD78D62A6937B5004B2FFB /* RetailTherapyApp.swift in Sources */,
 				A6FD78DA2A6937B5004B2FFB /* ImmersiveView.swift in Sources */,
 				A66FED752A6E98E000AAC4F6 /* StoreModel.swift in Sources */,
+				A631EF1A2AB46B52000C6C28 /* ShopItemAttribute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
