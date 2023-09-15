@@ -1,41 +1,40 @@
 import SwiftUI
-import RealityKit
-import RealityKitContent
 
 struct ContentView: View {
     @Environment(StoreModel.self) private var model
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    
+    @State private var selectedColor: Color = .blue
 
     var body: some View {
         @Bindable var model = model
         
         NavigationSplitView {
-            List(model.items, selection: $model.selectedItem) { item in
-                Text(item.name)
-                    .tag(item)
-            }
-            .navigationTitle("Shop Items")
+//            ForEach($model.items, id: \.entity.id) { item in
+//                List(selection: $model.selectedItem) {
+//                    Text(item.entity.name)
+//                        .tag(item)
+//                }
+//            }
+//            .navigationTitle("Shop Items")
             
         } detail: {
             ScrollView {
                 VStack(spacing: 20) {
                     Text(model.selectedItem == nil ? "Choose an item." : "Customise your item.")
                     
-                    if model.selectedItem != nil {
-                        ColorPicker("Cork Color", selection: $model.selectedCorkColor)
-                            .onChange(of: model.selectedCorkColor) { _, _ in
-                                model.updateItemMaterial(for: .cork)
-                            }
-                        
-                        ColorPicker("Body Color", selection: $model.selectedBodyColor)
-                            .onChange(of: model.selectedBodyColor) { _, _ in
-                                model.updateItemMaterial(for: .body)
-                            }
-                    }
+//                    if model.selectedItem != nil {
+//                        ForEach(model.selectedItem!.partKeys) { part in
+//                            ColorPicker("\(part.rawValue.capitalized) Color", selection: $selectedColor)
+//                                .onChange(of: selectedColor) { _, _ in
+//                                    model.selectedItem!.updateColor(for: part, to: selectedColor)
+//                                }
+//                        }
+//                    }
                 }
             }
-            .navigationTitle("Customise \(model.selectedItem?.name ?? "")")
+//            .navigationTitle("Customise \(model.selectedItem?.entity.name ?? "")")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {

@@ -46,14 +46,18 @@ struct ImmersiveView: View {
     
     private func createItemModel(for entity: Entity) {
         guard entity.components[CustomizableItemRuntimeComponent.self] == nil else { return }
-        guard let item = entity.components[CustomizableItemComponent.self] else { return }
+//        guard let item = entity.components[CustomizableItemComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
         
         Task {
-            let itemEntity = try! await Entity(named: item.assetName, in: realityKitContentBundle)
-            await entity.children.append(itemEntity)
-            model.items.append(itemEntity)
+            let bottle = try! await ShopItem(named: "Bottle") {
+                Library.Entity(named: "cork") {
+                    Library.Color()
+                }
+            }
+            await entity.children.append(bottle.entity)
+            model.items.append(bottle)
         }
         
         entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))
