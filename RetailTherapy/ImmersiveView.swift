@@ -51,9 +51,13 @@ struct ImmersiveView: View {
         let tag: ObjectIdentifier = entity.id
         
         Task {
-//            let bottle = await Bottle(bodyColor: .black, corkColor: .white)
-//            await entity.children.append(bottle.entity)
-//            model.items.append(bottle)
+            let bottle = try! await ShopItem(named: "Bottle") {
+                Library.Entity(named: "cork") {
+                    Library.Color()
+                }
+            }
+            await entity.children.append(bottle.entity)
+            model.items.append(bottle)
         }
         
         entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))
