@@ -12,7 +12,7 @@ struct ContentView: View {
             List(model.items, id: \.entity.id, selection: $model.selectedItem) { item in
 //                List(selection: $model.selectedItem) {
                     Text(item.entity.name)
-                        .tag(item)
+                    .tag(item.id)
 //                }
             }
             .navigationTitle("Shop Items")
@@ -22,14 +22,14 @@ struct ContentView: View {
                 VStack(spacing: 20) {
                     Text(model.selectedItem == nil ? "Choose an item." : "Customise your item.")
                     
-                    if model.selectedItem != nil {
-                        ForEach(model.selectedItem!.attributes) { attribute in
+                    if let selectedItem = model.item(id: model.selectedItem) {
+                        ForEach(selectedItem.attributes) { attribute in
                             attribute
                         }
                     }
                 }
             }
-            .navigationTitle("Customise \(model.selectedItem?.entity.name ?? "")")
+            .navigationTitle("Customise \(model.item(id: model.selectedItem)?.entity.name ?? "")")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {

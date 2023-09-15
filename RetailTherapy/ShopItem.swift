@@ -2,7 +2,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct ShopItem {
+struct ShopItem: Identifiable {
     var entity: RealityKit.Entity
     var entities: [Library.Entity]
     
@@ -20,16 +20,8 @@ struct ShopItem {
             $0.attributes.map { AnyShopItemAttribute($0) }
         }
     }
-}
-
-extension ShopItem: Hashable {
-    static func == (lhs: ShopItem, rhs: ShopItem) -> Bool {
-        lhs.entity == rhs.entity
-    }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(entity)
-    }
+    var id: ObjectIdentifier { entity.id }
 }
 
 struct Library { }
