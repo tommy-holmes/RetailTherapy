@@ -6,26 +6,19 @@ struct ShopItem {
     var entity: RealityKit.Entity
     var entities: [Library.Entity]
     
-    init(named name: String, @EntityBuilder entities: () -> [Library.Entity]) async throws {
+    init(named name: String, @EntityBuilder entities: () async -> [Library.Entity]) async throws {
         let entity = try await RealityKit.Entity(named: name, in: realityKitContentBundle)
-        self.entities = entities().map { $0.withEntity(entity) }
+        
+        self.entities = await entities().map {
+            $0.withEntity(entity)
+        }
         self.entity = entity
     }
     
-    var attributes: [AnyShopItemAttribute] {
-        var attributes: [AnyShopItemAttribute] = []
-        for entity in entities {
-            for attribute in entity.attributes {
-                attributes.append(
-                    AnyShopItemAttribute(
-                        attribute,
-                        entity: entity.entity,
-                        name: entity.name
-                    )
-                )
-            }
+    var attributes: [some ShopItemAttribute] {
+        entities.flatMap {
+            $0.attributes.map { AnyShopItemAttribute($0) }
         }
-        return attributes
     }
 }
 
@@ -45,7 +38,7 @@ extension Library {
     struct Entity {
         fileprivate var entity: RealityKit.Entity?
         let name: String
-        let attributes: [any ShopItemAttribute]
+        var attributes: [any ShopItemAttribute]
         
         init(named name: String, @AttributeBuilder _ attributes: () -> [any ShopItemAttribute]) {
             self.name = name
@@ -53,8 +46,17 @@ extension Library {
         }
         
         func withEntity(_ entity: RealityKit.Entity) -> Self {
+            guard let child = entity.findEntity(named: name) else {
+                print("Couldn't find child entity \(name)")
+                return self
+            }
+            
             var copy = self
             copy.entity = entity
+            
+            copy.attributes = copy.attributes.map {
+                $0.with(entity: child)
+            }
             return copy
         }
     }

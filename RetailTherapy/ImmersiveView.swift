@@ -53,10 +53,10 @@ struct ImmersiveView: View {
         Task {
             let bottle = try! await ShopItem(named: "Bottle") {
                 Library.Entity(named: "cork") {
-                    Library.Color(name: "Cork colour")
+                    Library.Color(name: "Cork Colour")
                 }
                 Library.Entity(named: "body") {
-                    Library.Color(name: "Body colour")
+                    Library.Color(name: "Body Colour")
                 }
             }
             await entity.children.append(bottle.entity)

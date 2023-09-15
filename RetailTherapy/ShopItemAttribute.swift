@@ -2,9 +2,9 @@ import SwiftUI
 import RealityKit
 
 protocol ShopItemAttribute: View, Identifiable {
-    associatedtype Value
+    associatedtype Value: Hashable
     
-    var entity: RealityKit.Entity? { get }
+    var entity: RealityKit.Entity? { get set }
     var name: String { get }
     var value: Value { get nonmutating set }
 }
@@ -12,6 +12,12 @@ protocol ShopItemAttribute: View, Identifiable {
 extension ShopItemAttribute {
     var projectedValue: Binding<Value> {
         .init(get: { value }, set: { value = $0 })
+    }
+    
+    func with(entity: RealityKit.Entity) -> Self {
+        var copy = self
+        copy.entity = entity
+        return copy
     }
 }
 
@@ -23,25 +29,26 @@ struct AnyShopItemAttribute: ShopItemAttribute {
     var entity: RealityKit.Entity?
     var name: String
     
-    private var _get: () -> Any
-    private var _set: (Any) -> Void
+    private var _get: () -> AnyHashable
+    private var _set: (AnyHashable) -> Void
     
-    var value: Any {
+    var value: AnyHashable {
         get { _get() }
         nonmutating set { _set(newValue) }
     }
     
     private var _body: () -> AnyView
     var body: some View {
+        // use copy not original
         _body()
     }
-    
-    init<T: ShopItemAttribute>(_ attribute: T, entity: RealityKit.Entity?, name: String) {
+    // Take out name and entity, don't set here
+    init<T: ShopItemAttribute>(_ attribute: T) {
         _get = { attribute.value }
         _set = { attribute.value = $0 as! T.Value }
         _body = { .init(attribute.body) }
-        self.entity = entity
-        self.name = name
+        entity = attribute.entity
+        name = attribute.name
     }
 }
 
@@ -53,8 +60,7 @@ extension Library {
         var value: SwiftUI.Color {
             get {
                 guard
-                    let attributeEntity = entity?.findEntity(named: name),
-                    let material = attributeEntity.shaderGraphMaterial
+                    let material = entity?.shaderGraphMaterial
                 else { return .primary }
                 
                 guard case .color(let value) = material.getParameter(name: "Color") else { return .primary }
@@ -63,16 +69,10 @@ extension Library {
             
             nonmutating set {
                 guard
-                    let attributeEntity = entity?.findEntity(named: name),
-                    let material = attributeEntity.shaderGraphMaterial
+                    let material = entity?.shaderGraphMaterial
                 else { return }
                 
-                if var component = attributeEntity.modelComponent {
-                    component.materials = [material]
-                    attributeEntity.components.set(component)
-                }
-                
-                attributeEntity.update(shaderGraphMaterial: material) { mat in
+                entity?.update(shaderGraphMaterial: material) { mat in
                     try! mat.setParameter(name: "Color", value: .color(UIColor(newValue)))
                 }
             }
