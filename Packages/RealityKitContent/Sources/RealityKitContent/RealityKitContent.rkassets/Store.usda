@@ -9,7 +9,7 @@ reorder rootPrims = ["Store", "Materials"]
 
 def Xform "Store"
 {
-    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Bottle", "Whiskey", "Whiskey_1", "Materials"]
+    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Bottle", "Whiskey", "Notebook", "Materials"]
     float3 xformOp:translate = (0, 0, -3)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -289,7 +289,7 @@ def Xform "Store"
         }
     }
 
-    def Xform "Whiskey_1"
+    def Xform "Notebook"
     {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
@@ -299,7 +299,7 @@ def Xform "Store"
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
-            token itemType = "whiskey"
+            token itemType = "notebook"
             string name = "Whiskey"
         }
     }

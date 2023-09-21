@@ -8,7 +8,7 @@ struct ImmersiveView: View {
     @State private var attatchmentsProvider = AttatchmentsProvider()
     @State private var subscriptions: [EventSubscription] = []
     
-//    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
+    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
 //    static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
     
     var body: some View {
@@ -46,18 +46,15 @@ struct ImmersiveView: View {
     
     private func createItemModel(for entity: Entity) {
         guard entity.components[CustomizableItemRuntimeComponent.self] == nil else { return }
-//        guard let item = entity.components[CustomizableItemComponent.self] else { return }
+        guard let component = entity.components[CustomizableItemComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
         
         Task {
-            let entityName = await entity.name
-            let item: ShopItem = switch entityName {
-            case "Bottle": await .bottle()
-            case "Whiskey": await .bottle()
-            case "Whiskey_1": await .bottle()
-                
-            default: fatalError("Not shop item entity found: \(entityName).")
+            let item: ShopItem = switch component.itemType {
+            case .bottle: await .bottle()
+            case .whiskey: await .whiskey()
+            case .notebook: await .notebook()
             }
             await entity.children.append(item.entity)
             model.items.append(item)

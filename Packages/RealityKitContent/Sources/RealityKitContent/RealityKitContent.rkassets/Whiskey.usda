@@ -165,12 +165,5 @@ def "Whiskey" (
             }
         }
     }
-
-    def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
-    {
-        uniform token info:id = "RealityKitContent.CustomizableItemComponent"
-        token itemType = "whiskey"
-        string name = "Whiskey"
-    }
 }
 

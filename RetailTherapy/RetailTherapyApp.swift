@@ -6,7 +6,7 @@ struct RetailTherapyApp: App {
     @State private var model = StoreModel()
     
     init() {
-        RealityKitContent.BottleCustomizeSystem.registerSystem()
+        RealityKitContent.CustomizableItemComponent.registerComponent()
     }
     
     var body: some Scene {
