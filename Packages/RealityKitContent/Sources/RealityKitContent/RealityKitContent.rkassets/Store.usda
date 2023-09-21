@@ -9,7 +9,7 @@ reorder rootPrims = ["Store", "Materials"]
 
 def Xform "Store"
 {
-    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Bottle", "Whiskey", "Notebook", "Materials"]
+    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Item_1", "Item_2", "Item_3", "Material", "Materials"]
     float3 xformOp:translate = (0, 0, -3)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -80,7 +80,7 @@ def Xform "Store"
     )
     {
         reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/MaplePlywood> (
+        rel material:binding = </Store/Materials/VarnishedWood> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -110,7 +110,7 @@ def Xform "Store"
     )
     {
         reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/MaplePlywood> (
+        rel material:binding = </Store/Materials/VarnishedWood> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -139,7 +139,7 @@ def Xform "Store"
     )
     {
         reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/MaplePlywood> (
+        rel material:binding = </Store/Materials/VarnishedWood> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -189,7 +189,7 @@ def Xform "Store"
         }
     )
     {
-        rel material:binding = </Store/Materials/WoodPlank> (
+        rel material:binding = </Store/Materials/Wallpaper> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -207,7 +207,7 @@ def Xform "Store"
         }
     )
     {
-        rel material:binding = </Store/Materials/WoodPlank> (
+        rel material:binding = </Store/Materials/Wallpaper> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -222,7 +222,7 @@ def Xform "Store"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        rel material:binding = </Store/Materials/WoodPlank> (
+        rel material:binding = </Store/Materials/Wallpaper> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -238,7 +238,7 @@ def Xform "Store"
     )
     {
         reorder nameChildren = ["Wall_2", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/WoodPlank> (
+        rel material:binding = </Store/Materials/Wallpaper> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 0.2
@@ -253,11 +253,197 @@ def Xform "Store"
         references = @Materials.usda@
     )
     {
+        reorder nameChildren = ["Wallpaper", "VarnishedWood", "WoodPlank", "MaplePlywood", "GlossyBlackWoodPlank"]
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 3)
+
+        over "WoodPlank"
+        {
+            reorder nameChildren = ["UsdPreviewSurface", "MaterialXPreviewSurface", "Basecolor", "Metallic", "add", "multiply", "Normal", "Roughness"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Basecolor"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 839
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 840
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "MaterialXPreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (207.5, 199)
+                int ui:nodegraph:node:stackingOrder = 838
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+                int ui:nodegraph:node:stackingOrder = 843
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+                int ui:nodegraph:node:stackingOrder = 842
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+        }
+
+        def Material "Wallpaper"
+        {
+            token outputs:mtlx:surface.connect = </Store/Materials/Wallpaper/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (299.25, 99.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Store/Materials/Wallpaper/BaseColor.outputs:out>
+                color3f inputs:emissiveColor
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal.connect = </Store/Materials/Wallpaper/Normal.outputs:out>
+                float inputs:opacity.connect = None
+                float inputs:roughness.connect = </Store/Materials/Wallpaper/Mask.outputs:out>
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (74.25, 99.5)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 19
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = []
+            }
+
+            def Shader "BaseColor"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @Morrocan/Green_Moroccan_Wallpaper_baseColor.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-369.85547, -123.30469)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 26
+            }
+
+            def Shader "Mask"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Morrocan/Green_Moroccan_Wallpaper_mask.png@
+                string inputs:filtertype
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-366.66406, 134.8086)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 27
+            }
+
+            def Shader "Normal"
+            {
+                uniform token info:id = "ND_image_vector3"
+                asset inputs:file = @Morrocan/Green_Moroccan_Wallpaper_normal.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                float3 outputs:out
+                float2 ui:nodegraph:node:pos = (-373.9375, 378.28125)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 28
+            }
+        }
+
+        def Material "VarnishedWood"
+        {
+            prepend token outputs:mtlx:surface.connect = </Store/Materials/VarnishedWood/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (299.25, 99.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                color3f inputs:diffuseColor.connect = </Store/Materials/VarnishedWood/BaseColor.outputs:out>
+                float inputs:metallic.connect = </Store/Materials/VarnishedWood/Roughness.outputs:out>
+                float3 inputs:normal.connect = </Store/Materials/VarnishedWood/Normal.outputs:out>
+                float inputs:opacity.connect = None
+                float inputs:roughness.connect = </Store/Materials/VarnishedWood/Diffuse.outputs:out>
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (74.25, 99.5)
+                float2 ui:nodegraph:node:size = (159.5, 307)
+                int ui:nodegraph:node:stackingOrder = 14
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:diffuseColor", "Advanced"]
+            }
+
+            def Shader "BaseColor"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @VarnishedWood/Mahogany_Varnished_baseColor.png@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-204.57812, -134.5664)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 13
+            }
+
+            def Shader "Diffuse"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @VarnishedWood/Mahogany_Varnished_diffuse.png@
+                string inputs:filtertype
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-451.7461, -123.30078)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 28
+            }
+
+            def Shader "Normal"
+            {
+                uniform token info:id = "ND_image_vector3"
+                asset inputs:file = @VarnishedWood/Mahogany_Varnished_normal.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                float3 outputs:out
+                float2 ui:nodegraph:node:pos = (-288.125, 250.10938)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 22
+            }
+
+            def Shader "Image"
+            {
+                uniform token info:id = "ND_image_float"
+                float2 ui:nodegraph:node:pos = (309.46875, -230.1289)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 29
+            }
+
+            def Shader "Roughness"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @VarnishedWood/Mahogany_Varnished_roughness.png@
+                string inputs:filtertype
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-496.012, 89.670906)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 32
+            }
+        }
     }
 
-    def Xform "Bottle"
+    def Xform "Item_1"
     {
         float3 xformOp:translate = (0, 1, -3)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
@@ -268,7 +454,7 @@ def Xform "Store"
         }
     }
 
-    def Xform "Whiskey" (
+    def Xform "Item_2" (
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
@@ -287,7 +473,7 @@ def Xform "Store"
         }
     }
 
-    def Xform "Notebook"
+    def Xform "Item_3"
     {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
