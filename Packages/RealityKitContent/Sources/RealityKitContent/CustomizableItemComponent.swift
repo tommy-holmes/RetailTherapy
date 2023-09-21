@@ -2,6 +2,7 @@ import RealityKit
 
 public enum ItemType: String, Codable {
     case bottle
+    case whiskey
 }
 
 // Ensure you register this component in your app’s delegate using:

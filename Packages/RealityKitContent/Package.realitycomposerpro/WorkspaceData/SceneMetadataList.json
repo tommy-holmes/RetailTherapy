@@ -16,6 +16,42 @@
 
     ]
   },
+  "26F2AE47-05D0-433C-A0E3-FB623AAB8997" : {
+    "objectMetadataList" : [
+      [
+        "26F2AE47-05D0-433C-A0E3-FB623AAB8997",
+        "Whiskey",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "26F2AE47-05D0-433C-A0E3-FB623AAB8997",
+        "Whiskey"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "26F2AE47-05D0-433C-A0E3-FB623AAB8997",
+        "Whiskey",
+        "Materials",
+        "body"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "036D6F49-DE5A-4AE2-9B5D-F0C100FF3993" : {
+    "objectMetadataList" : [
+
+    ]
+  },
   "65F6F990-A780-4474-B78B-572E0E4E273D" : {
     "objectMetadataList" : [
       [
@@ -32,8 +68,7 @@
     "objectMetadataList" : [
       [
         "88C5B37B-537F-4D91-9349-4C08E80FD7F0",
-        "Materials",
-        "MaplePlywood"
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -41,7 +76,8 @@
       },
       [
         "88C5B37B-537F-4D91-9349-4C08E80FD7F0",
-        "Materials"
+        "Materials",
+        "MaplePlywood"
       ],
       {
         "isExpanded" : true,
@@ -65,16 +101,8 @@
     "objectMetadataList" : [
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "bottle_body",
+        "bottle",
         "Materials",
         "STL_material"
       ],
@@ -84,9 +112,7 @@
       },
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle",
-        "bottle",
-        "Materials"
+        "Bottle"
       ],
       {
         "isExpanded" : true,
@@ -116,7 +142,7 @@
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
         "Bottle_Materials",
-        "cork_material"
+        "body_material"
       ],
       {
         "isExpanded" : true,
@@ -125,7 +151,8 @@
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "Materials"
+        "Materials",
+        "body_material_"
       ],
       {
         "isExpanded" : true,
@@ -134,7 +161,7 @@
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "bottle",
+        "bottle_body",
         "Materials",
         "STL_material"
       ],
@@ -155,8 +182,8 @@
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "Bottle_Materials",
-        "body_material"
+        "Whiskey",
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -165,8 +192,18 @@
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "Materials",
-        "body_material_"
+        "Bottle_Materials",
+        "cork_material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle",
+        "bottle",
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -217,6 +254,65 @@
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "CC0E8310-7634-4706-A6B4-96581BD8D838" : {
+    "objectMetadataList" : [
+      [
+        "CC0E8310-7634-4706-A6B4-96581BD8D838",
+        "Whiskey",
+        "bottle"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "CC0E8310-7634-4706-A6B4-96581BD8D838",
+        "Whiskey",
+        "bottle",
+        "liquid"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "CC0E8310-7634-4706-A6B4-96581BD8D838",
+        "Whiskey",
+        "bottle_geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "CC0E8310-7634-4706-A6B4-96581BD8D838",
+        "Whiskey",
+        "bottle",
+        "bottle_geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "CC0E8310-7634-4706-A6B4-96581BD8D838",
+        "Whiskey",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "CC0E8310-7634-4706-A6B4-96581BD8D838",
+        "Whiskey"
       ],
       {
         "isExpanded" : true,
@@ -286,82 +382,7 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Wall_4"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "room",
-        "Mesh_grp",
-        "Walls_grp"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Ceiling"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Cube_1"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_E"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "room",
-        "Mesh_grp"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_2"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Table_1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Table_2"
+        "Table_3"
       ],
       {
         "isExpanded" : true,
@@ -371,6 +392,15 @@
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
         "Cube"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_2"
       ],
       {
         "isExpanded" : false,
@@ -388,7 +418,37 @@
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store"
+        "Store",
+        "Ceiling"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_S"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Table_2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "room",
+        "Mesh_grp",
+        "Walls_grp"
       ],
       {
         "isExpanded" : true,
@@ -405,8 +465,16 @@
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Wall_S"
+        "Floor"
       ],
       {
         "isExpanded" : true,
@@ -424,10 +492,20 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Table_3"
+        "room",
+        "Mesh_grp"
       ],
       {
         "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Cube_1"
+      ],
+      {
+        "isExpanded" : false,
         "isLocked" : true
       },
       [
@@ -442,7 +520,25 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Floor"
+        "Wall_4"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_E"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Table_1"
       ],
       {
         "isExpanded" : true,

@@ -10,10 +10,8 @@ struct ContentView: View {
         
         NavigationSplitView {
             List(model.items, id: \.entity.id, selection: $model.selectedItem) { item in
-//                List(selection: $model.selectedItem) {
-                    Text(item.entity.name)
+                Text(item.entity.name)
                     .tag(item.id)
-//                }
             }
             .navigationTitle("Shop Items")
             

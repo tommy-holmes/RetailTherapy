@@ -51,16 +51,16 @@ struct ImmersiveView: View {
         let tag: ObjectIdentifier = entity.id
         
         Task {
-            let bottle = try! await ShopItem(named: "Bottle") {
-                Library.Entity(named: "cork") {
-                    Library.Color(name: "Cork Colour")
-                }
-                Library.Entity(named: "body") {
-                    Library.Color(name: "Body Colour")
-                }
+            let entityName = await entity.name
+            let item: ShopItem = switch entityName {
+            case "Bottle": await .bottle()
+            case "Whiskey": await .bottle()
+            case "Whiskey_1": await .bottle()
+                
+            default: fatalError("Not shop item entity found: \(entityName).")
             }
-            await entity.children.append(bottle.entity)
-            model.items.append(bottle)
+            await entity.children.append(item.entity)
+            model.items.append(item)
         }
         
         entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))

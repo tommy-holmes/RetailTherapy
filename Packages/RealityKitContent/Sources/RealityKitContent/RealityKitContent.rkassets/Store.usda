@@ -9,7 +9,7 @@ reorder rootPrims = ["Store", "Materials"]
 
 def Xform "Store"
 {
-    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Item_1", "Item_2", "Item_3", "Materials"]
+    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Bottle", "Whiskey", "Whiskey_1", "Materials"]
     float3 xformOp:translate = (0, 0, -3)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -248,7 +248,16 @@ def Xform "Store"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def Xform "Item_1"
+    def "Materials" (
+        active = true
+        references = @Materials.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 3)
+    }
+
+    def Xform "Bottle"
     {
         float3 xformOp:translate = (0, 1, -3)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
@@ -256,11 +265,11 @@ def Xform "Store"
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
-            string name = "Bottle 1"
+            string name = "Bottle"
         }
     }
 
-    def Xform "Item_2" (
+    def Xform "Whiskey" (
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
@@ -275,11 +284,12 @@ def Xform "Store"
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
-            string name = "Bottle 2"
+            token itemType = "whiskey"
+            string name = "Whiskey"
         }
     }
 
-    def Xform "Item_3"
+    def Xform "Whiskey_1"
     {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
@@ -289,17 +299,9 @@ def Xform "Store"
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
-            string name = "Bottle 3"
+            token itemType = "whiskey"
+            string name = "Whiskey"
         }
-    }
-
-    def "Materials" (
-        active = true
-        references = @Materials.usda@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, 3)
     }
 }
 
