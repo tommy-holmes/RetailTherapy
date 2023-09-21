@@ -13,6 +13,7 @@ struct ShopItem: Identifiable {
             $0.withEntity(entity)
         }
         self.entity = entity
+        print(entity)
     }
     
     var attributes: [some ShopItemAttribute] {
@@ -38,7 +39,7 @@ extension ShopItem {
     
     static var notebook: () async -> Self = {
         try! await ShopItem(named: "Notebook") {
-            Library.Entity(named: "libro") {
+            Library.Entity(named: "Plane_geometry") {
                 Library.Color(name: "Cover Colour")
             }
         }
@@ -46,11 +47,14 @@ extension ShopItem {
     
     static var whiskey: () async -> Self = {
         try! await ShopItem(named: "Whiskey") {
-            Library.Entity(named: "cap_1") {
+            Library.Entity(named: "cap") {
                 Library.Color(name: "Cap Colour")
             }
-            Library.Entity(named: "liquid_1") {
-                Library.Color(name: "Liquid Colour")
+            Library.Entity(named: "neck") {
+                Library.Color(name: "Neck Colour")
+            }
+            Library.Entity(named: "body") {
+                Library.Color(name: "Body Colour")
             }
         }
     }

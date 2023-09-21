@@ -265,7 +265,6 @@ def Xform "Store"
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
-            string name = "Bottle"
         }
     }
 
@@ -285,7 +284,6 @@ def Xform "Store"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
             token itemType = "whiskey"
-            string name = "Whiskey"
         }
     }
 
@@ -300,7 +298,6 @@ def Xform "Store"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
             token itemType = "notebook"
-            string name = "Whiskey"
         }
     }
 }
