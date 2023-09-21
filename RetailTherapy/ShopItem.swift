@@ -39,8 +39,16 @@ extension ShopItem {
     
     static var notebook: () async -> Self = {
         try! await ShopItem(named: "Notebook") {
-            Library.Entity(named: "Plane_geometry") {
+            Library.Entity(named: "cover") {
                 Library.Color(name: "Cover Colour")
+            }
+        }
+    }
+    
+    static var mug: () async -> Self = {
+        try! await ShopItem(named: "Mug") {
+            Library.Entity(named: "body") {
+                Library.Color(name: "Body Colour")
             }
         }
     }

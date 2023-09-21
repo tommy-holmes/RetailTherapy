@@ -55,6 +55,7 @@ struct ImmersiveView: View {
             case .bottle: await .bottle()
             case .whiskey: await .whiskey()
             case .notebook: await .notebook()
+            case .mug: await .mug()
             }
             await entity.children.append(item.entity)
             model.items.append(item)
