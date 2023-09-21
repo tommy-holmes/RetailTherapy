@@ -1,0 +1,119 @@
+#usda 1.0
+(
+    defaultPrim = "Notebook"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def "Notebook" (
+    active = true
+    references = @Notebook.usdz@
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.001, 0.001, 0.001)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Camera" (
+        active = false
+    )
+    {
+    }
+
+    over "Point" (
+        active = false
+    )
+    {
+    }
+
+    over "Materials"
+    {
+        over "libro"
+        {
+            color3f inputs:Color = (0, 0, 0) (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-575.8047, 105.984375)
+                        float2 sizeInSubgraph = (133, 53)
+                        int stackingOrderInSubgraph = 3
+                    }
+                }
+            )
+            prepend token outputs:mtlx:surface.connect = </Notebook/Materials/libro/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Notebook/Materials/libro/libroPreviewSurface.outputs:surface>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "libroPreviewSurface" (
+                active = false
+            )
+            {
+                color3f inputs:diffuseColor = (0.999996, 1, 1) (
+                    colorSpace = "srgb_texture"
+                )
+            }
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Notebook/Materials/libro.inputs:Color>
+                color3f inputs:emissiveColor.connect = </Notebook/Materials/libro.inputs:Color>
+                float inputs:ior
+                float inputs:metallic
+                float3 inputs:normal
+                float inputs:occlusion
+                float inputs:opacity
+                float inputs:roughness
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (-255, 105)
+                float2 ui:nodegraph:node:size = (159.5, 307)
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+        }
+
+        over "Hojas"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+
+            over "HojasPreviewSurface"
+            {
+                color3f inputs:diffuseColor = (0.999996, 1, 1) (
+                    colorSpace = "srgb_texture"
+                )
+            }
+        }
+
+        over "Material" (
+            active = false
+        )
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "MaterialPreviewSurface"
+            {
+                color3f inputs:diffuseColor = (0.999996, 1, 1) (
+                    colorSpace = "srgb_texture"
+                )
+            }
+        }
+
+        over "defaultMaterial" (
+            active = false
+        )
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        }
+    }
+}
+
