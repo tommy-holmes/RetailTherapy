@@ -13,7 +13,6 @@ struct ShopItem: Identifiable {
             $0.withEntity(entity)
         }
         self.entity = entity
-        print(entity)
     }
     
     var attributes: [some ShopItemAttribute] {

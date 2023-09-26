@@ -9,8 +9,8 @@ reorder rootPrims = ["Store", "Materials"]
 
 def Xform "Store"
 {
-    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Table_1", "Table_2", "Table_3", "Item_1", "Item_2", "Item_3", "Material", "Materials"]
-    float3 xformOp:translate = (0, 0, -3)
+    reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Shelf_1", "Bracket_Right", "Bracket_Left", "Item_1", "Item_2", "Item_3", "Materials"]
+    float3 xformOp:translate = (0, 0, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     def Cube "Ceiling" (
@@ -74,95 +74,6 @@ def Xform "Store"
         }
     }
 
-    def Cube "Table_3" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/VarnishedWood> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double size = 0.2
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (5, 5, 20)
-        float3 xformOp:translate = (-2.6194546, 0.5, 1.3009415)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.2, 0.2, 0.2)
-                token shapeType = "Box"
-            }
-        }
-    }
-
-    def Cube "Table_2" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/VarnishedWood> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double size = 0.2
-        float3 xformOp:scale = (5, 5, 20)
-        float3 xformOp:translate = (0, 0.5, -1.8285728)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.2, 0.2, 0.2)
-                token shapeType = "Box"
-            }
-        }
-    }
-
-    def Cube "Table_1" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
-        rel material:binding = </Store/Materials/VarnishedWood> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double size = 0.2
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (5, 5, 20)
-        float3 xformOp:translate = (2.474279, 0.5, 1.3009415)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.2, 0.2, 0.2)
-                token shapeType = "Box"
-            }
-        }
-    }
-
     def Cube "Floor" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -171,10 +82,10 @@ def Xform "Store"
         }
     )
     {
-        rel material:binding = </Store/Materials/GlossyBlackWoodPlank> (
+        rel material:binding = </Store/Materials/Floor> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 10
+        double size = 5
         quatf xformOp:orient = (0.99999994, 0, 0, 0)
         float3 xformOp:scale = (0.9999998, 2.2204459e-16, 0.99999994)
         float3 xformOp:translate = (-1.1244295e-10, 1.1920929e-7, 0)
@@ -194,8 +105,8 @@ def Xform "Store"
         )
         double size = 0.2
         quatf xformOp:orient = (0.70710677, 0, 0.7071067, 0)
-        float3 xformOp:scale = (50, 20, 2.220446e-16)
-        float3 xformOp:translate = (-5, 2, 0)
+        float3 xformOp:scale = (25, 20, 2.220446e-16)
+        float3 xformOp:translate = (-2.5, 2, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -212,8 +123,8 @@ def Xform "Store"
         )
         double size = 0.2
         quatf xformOp:orient = (0.70710677, 0, 0.7071067, 0)
-        float3 xformOp:scale = (50, 20, 2.220446e-16)
-        float3 xformOp:translate = (5, 2, 0)
+        float3 xformOp:scale = (25, 20, 2.220446e-16)
+        float3 xformOp:translate = (2.5, 2, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -227,8 +138,8 @@ def Xform "Store"
         )
         double size = 0.2
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (50.000008, 20, 2.220446e-16)
-        float3 xformOp:translate = (0, 2, 5)
+        float3 xformOp:scale = (25, 20, 2.220446e-16)
+        float3 xformOp:translate = (0, 2, 2.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -243,8 +154,8 @@ def Xform "Store"
         )
         double size = 0.2
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (50, 20, 2.220446e-16)
-        float3 xformOp:translate = (0, 2, -5)
+        float3 xformOp:scale = (25, 20, 2.220446e-16)
+        float3 xformOp:translate = (0, 2, -2.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -253,7 +164,7 @@ def Xform "Store"
         references = @Materials.usda@
     )
     {
-        reorder nameChildren = ["Wallpaper", "VarnishedWood", "WoodPlank", "MaplePlywood", "GlossyBlackWoodPlank"]
+        reorder nameChildren = ["Floor", "Wallpaper", "VarnishedWood", "WoodPlank", "MaplePlywood", "GlossyBlackWoodPlank"]
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 3)
 
@@ -332,42 +243,166 @@ def Xform "Store"
             def Shader "BaseColor"
             {
                 uniform token info:id = "ND_image_color3"
-                asset inputs:file = @Morrocan/Green_Moroccan_Wallpaper_baseColor.png@
+                asset inputs:file = @Wallpaper/Retro_Mood_Mocca_Wallpaper_baseColor.png@
                 string inputs:filtertype
                 string inputs:vaddressmode
                 color3f outputs:out
                 float2 ui:nodegraph:node:pos = (-369.85547, -123.30469)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 26
+                int ui:nodegraph:node:stackingOrder = 30
             }
 
             def Shader "Mask"
             {
                 uniform token info:id = "ND_image_float"
-                asset inputs:file = @Morrocan/Green_Moroccan_Wallpaper_mask.png@
+                asset inputs:file = @Wallpaper/Retro_Mood_Mocca_Wallpaper_mask.png@
                 string inputs:filtertype
                 float outputs:out
                 float2 ui:nodegraph:node:pos = (-366.66406, 134.8086)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 27
+                int ui:nodegraph:node:stackingOrder = 31
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:default"]
             }
 
             def Shader "Normal"
             {
                 uniform token info:id = "ND_image_vector3"
-                asset inputs:file = @Morrocan/Green_Moroccan_Wallpaper_normal.png@
+                asset inputs:file = @Wallpaper/Retro_Mood_Mocca_Wallpaper_normal.png@
                 string inputs:filtertype
                 string inputs:vaddressmode
                 float3 outputs:out
                 float2 ui:nodegraph:node:pos = (-373.9375, 378.28125)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 28
+                int ui:nodegraph:node:stackingOrder = 32
+            }
+        }
+
+        over "GlossyBlackWoodPlank"
+        {
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Basecolor"
+            {
+                asset inputs:file = @Floor/Pale_Oak_Chevron_Flooring_baseColor.png@
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 838
+            }
+
+            over "Roughness"
+            {
+                asset inputs:file = @Floor/Pale_Oak_Chevron_Flooring_mask.png@
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 841
+            }
+
+            over "Metallic" (
+                active = false
+            )
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 841
+            }
+
+            over "MaterialXPreviewSurface"
+            {
+                float inputs:metallic.connect = None
+                float inputs:roughness.connect = </Store/Materials/GlossyBlackWoodPlank/Roughness.outputs:out>
+                float2 ui:nodegraph:node:size = (207.5, 307)
+                int ui:nodegraph:node:stackingOrder = 842
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:pos = (85.28893, 587.96356)
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+                int ui:nodegraph:node:stackingOrder = 879
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:pos = (-2.4831948, 590.0799)
+                float2 ui:nodegraph:node:size = (60, 36)
+                int ui:nodegraph:node:stackingOrder = 879
+            }
+
+            over "Normal"
+            {
+                asset inputs:file = @Floor/Pale_Oak_Chevron_Flooring_normal.png@
+                float2 ui:nodegraph:node:pos = (-197.70018, 563.6854)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 844
+            }
+        }
+
+        def Material "Floor"
+        {
+            prepend token outputs:mtlx:surface.connect = </Store/Materials/Floor/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (385.73343, 99.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 35
+
+            def Shader "Roughness"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @@
+                string inputs:filtertype
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-290.65625, 144.76953)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 34
+            }
+
+            def Shader "BaseColor"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-233.02734, -92.4375)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 39
+            }
+
+            def Shader "Normal"
+            {
+                uniform token info:id = "ND_image_vector3"
+                asset inputs:file = @@
+                string inputs:filtertype
+                string inputs:uaddressmode
+                string inputs:vaddressmode
+                float3 outputs:out
+                float2 ui:nodegraph:node:pos = (-217.79192, 370.5631)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 32
+            }
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Store/Materials/Floor/BaseColor.outputs:out>
+                color3f inputs:emissiveColor
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal.connect = </Store/Materials/Floor/Normal.outputs:out>
+                float inputs:occlusion
+                float inputs:opacity.connect = None
+                float inputs:opacityThreshold
+                float inputs:roughness.connect = </Store/Materials/Floor/Roughness.outputs:out>
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (74.25, 99.5)
+                float2 ui:nodegraph:node:size = (159.5, 307)
+                int ui:nodegraph:node:stackingOrder = 37
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
             }
         }
 
         def Material "VarnishedWood"
         {
-            prepend token outputs:mtlx:surface.connect = </Store/Materials/VarnishedWood/PreviewSurface.outputs:out>
+            token outputs:mtlx:surface.connect = </Store/Materials/VarnishedWood/PreviewSurface.outputs:out>
             token outputs:realitykit:vertex
             float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (299.25, 99.5)
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
@@ -378,9 +413,9 @@ def Xform "Store"
                 float inputs:clearcoat
                 color3f inputs:diffuseColor.connect = </Store/Materials/VarnishedWood/BaseColor.outputs:out>
                 float inputs:metallic.connect = </Store/Materials/VarnishedWood/Roughness.outputs:out>
-                float3 inputs:normal.connect = </Store/Materials/VarnishedWood/Normal.outputs:out>
+                float3 inputs:normal.connect = None
                 float inputs:opacity.connect = None
-                float inputs:roughness.connect = </Store/Materials/VarnishedWood/Diffuse.outputs:out>
+                float inputs:roughness.connect = None
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (74.25, 99.5)
                 float2 ui:nodegraph:node:size = (159.5, 307)
@@ -391,61 +426,42 @@ def Xform "Store"
             def Shader "BaseColor"
             {
                 uniform token info:id = "ND_image_color3"
-                asset inputs:file = @VarnishedWood/Mahogany_Varnished_baseColor.png@
+                asset inputs:file = @Table Wood/Ivory_Walnut_Solid_Wood_baseColor.png@
                 string inputs:filtertype
                 color3f outputs:out
                 float2 ui:nodegraph:node:pos = (-204.57812, -134.5664)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 13
-            }
-
-            def Shader "Diffuse"
-            {
-                uniform token info:id = "ND_image_float"
-                asset inputs:file = @VarnishedWood/Mahogany_Varnished_diffuse.png@
-                string inputs:filtertype
-                float outputs:out
-                float2 ui:nodegraph:node:pos = (-451.7461, -123.30078)
-                float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 28
-            }
-
-            def Shader "Normal"
-            {
-                uniform token info:id = "ND_image_vector3"
-                asset inputs:file = @VarnishedWood/Mahogany_Varnished_normal.png@
-                string inputs:filtertype
-                string inputs:vaddressmode
-                float3 outputs:out
-                float2 ui:nodegraph:node:pos = (-288.125, 250.10938)
-                float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 22
-            }
-
-            def Shader "Image"
-            {
-                uniform token info:id = "ND_image_float"
-                float2 ui:nodegraph:node:pos = (309.46875, -230.1289)
-                float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 29
+                int ui:nodegraph:node:stackingOrder = 33
             }
 
             def Shader "Roughness"
             {
                 uniform token info:id = "ND_image_float"
-                asset inputs:file = @VarnishedWood/Mahogany_Varnished_roughness.png@
+                asset inputs:file = @Table Wood/Ivory_Walnut_Solid_Wood_Mask.png@
                 string inputs:filtertype
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (-496.012, 89.670906)
+                float2 ui:nodegraph:node:pos = (-477.32843, -60.88327)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 32
+                int ui:nodegraph:node:stackingOrder = 38
+            }
+
+            def Shader "Normal"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Table Wood/Ivory_Walnut_Solid_Wood_Normal.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-373.71088, 199.52237)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 41
             }
         }
     }
 
     def Xform "Item_1"
     {
-        float3 xformOp:translate = (0, 1, -3)
+        float3 xformOp:translate = (0, 1.5, -2)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
@@ -463,7 +479,7 @@ def Xform "Store"
         )
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 1, -1.8013959)
+        float3 xformOp:translate = (1, 1.5, -2)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
@@ -477,13 +493,50 @@ def Xform "Store"
     {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 1, -0.5)
+        float3 xformOp:translate = (-1, 1.5, -2)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
             token itemType = "mug"
+        }
+    }
+
+    def "Shelf_1" (
+        active = true
+        references = @Shelf.usda@
+    )
+    {
+        reorder nameChildren = ["Shelf", "Bracket_Right", "Bracket_Left"]
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 1.5, -2)
+
+        over "Shelf" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Store/Materials/VarnishedWood> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+        }
+
+        over "Bracket_Right" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Store/Materials/VarnishedWood> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+        }
+
+        over "Bracket_Left" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Store/Materials/VarnishedWood> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
         }
     }
 }

@@ -16,12 +16,12 @@
 		A6FD78D62A6937B5004B2FFB /* RetailTherapyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */; };
 		A6FD78D82A6937B5004B2FFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D72A6937B5004B2FFB /* ContentView.swift */; };
 		A6FD78DA2A6937B5004B2FFB /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D92A6937B5004B2FFB /* ImmersiveView.swift */; };
-		A6FD78DC2A6937B5004B2FFB /* ImageBasedLight.exr in Resources */ = {isa = PBXBuildFile; fileRef = A6FD78DB2A6937B5004B2FFB /* ImageBasedLight.exr */; };
 		A6FD78DE2A6937B6004B2FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FD78DD2A6937B6004B2FFB /* Assets.xcassets */; };
 		A6FD78E12A6937B6004B2FFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FD78E02A6937B6004B2FFB /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A61DBFEF2AC30CEA00D0F2D6 /* ImageBasedLighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = ImageBasedLighting.skybox; sourceTree = "<group>"; };
 		A620EE082AAB27820041F2EE /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
 		A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemAttribute.swift; sourceTree = "<group>"; };
 		A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttatchmentsProvider.swift; sourceTree = "<group>"; };
@@ -32,7 +32,6 @@
 		A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetailTherapyApp.swift; sourceTree = "<group>"; };
 		A6FD78D72A6937B5004B2FFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A6FD78D92A6937B5004B2FFB /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
-		A6FD78DB2A6937B5004B2FFB /* ImageBasedLight.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImageBasedLight.exr; sourceTree = "<group>"; };
 		A6FD78DD2A6937B6004B2FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6FD78E02A6937B6004B2FFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +76,7 @@
 				A620EE082AAB27820041F2EE /* ShopItem.swift */,
 				A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */,
 				A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */,
-				A6FD78DB2A6937B5004B2FFB /* ImageBasedLight.exr */,
+				A61DBFEF2AC30CEA00D0F2D6 /* ImageBasedLighting.skybox */,
 				A6FD78DD2A6937B6004B2FFB /* Assets.xcassets */,
 				A6FD78DF2A6937B6004B2FFB /* Preview Content */,
 			);
@@ -163,7 +162,6 @@
 			files = (
 				A6FD78DE2A6937B6004B2FFB /* Assets.xcassets in Resources */,
 				A6FD78E12A6937B6004B2FFB /* Preview Assets.xcassets in Resources */,
-				A6FD78DC2A6937B5004B2FFB /* ImageBasedLight.exr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

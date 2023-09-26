@@ -22,10 +22,15 @@ struct ImmersiveView: View {
                 })
                 
                 let storeEntity = try await Entity(named: "Store", in: realityKitContentBundle)
+                
                 model.rootEntity = storeEntity
                 
                 content.add(storeEntity)
                 content.add(generateSkybox())
+                
+//                let resource = try await EnvironmentResource(named: "ImageBasedLight")
+//                storeEntity.components.set(ImageBasedLightComponent(source: .single(resource), intensityExponent: 1))
+//                storeEntity.components.set(ImageBasedLightReceiverComponent(imageBasedLight: storeEntity))
             } catch {
                 print("Error in RealityView's make: \(error)")
             }
