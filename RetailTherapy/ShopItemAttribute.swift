@@ -73,7 +73,7 @@ extension Library {
                     let material = entity?.shaderGraphMaterial(at: geoSubsetIndex)
                 else { return }
                 
-                entity?.update(shaderGraphMaterial: material, index: geoSubsetIndex) { mat in
+                entity?.update(shaderGraphMaterial: material, geoSubsetIndex: geoSubsetIndex) { mat in
                     try! mat.setParameter(name: "Color", value: .color(UIColor(newValue)))
                 }
             }

@@ -13,7 +13,7 @@ def "Book" (
     references = @Book.usdz@
 )
 {
-    reorder nameChildren = ["geo", "Materials", "book_close_paper_016"]
+    reorder nameChildren = ["geo", "Store", "Materials", "book_close_paper_016"]
     quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
     float3 xformOp:scale = (0.03, 0.03, 0.03)
     float3 xformOp:translate = (0, 0.225, 0)
@@ -37,8 +37,9 @@ def "Book" (
                 colorSpace = "srgb_texture"
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-523.0117, 128.35547)
+                        float2 positionInSubgraph = (-611.75, 118.99609)
                         float2 sizeInSubgraph = (133, 53)
+                        int stackingOrderInSubgraph = 25
                     }
                 }
             )
@@ -65,22 +66,33 @@ def "Book" (
                 float inputs:metallic
                 float3 inputs:normal
                 float inputs:opacity
-                float inputs:roughness
+                float inputs:roughness.connect = </Book/Materials/book_close/Roughness.outputs:out>
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-255, 105)
                 float2 ui:nodegraph:node:size = (159.5, 307)
                 int ui:nodegraph:node:stackingOrder = 5
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
             }
+
+            def Shader "Roughness"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Screenshot 2023-09-27 at 14.45.05.png@
+                string inputs:filtertype
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-746.6094, -52.367188)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 41
+            }
         }
 
         over "book_close_banner"
         {
-            color3f inputs:Color = (0.67178136, 0.5803872, 0.41165066) (
+            color3f inputs:Color = (0.6642242, 0.66424006, 0.66423154) (
                 colorSpace = "srgb_texture"
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-541.23047, 81.23047)
+                        float2 positionInSubgraph = (-742.4559, -38.089684)
                         float2 sizeInSubgraph = (133, 53)
                     }
                 }
@@ -105,16 +117,29 @@ def "Book" (
                 color3f inputs:diffuseColor.connect = </Book/Materials/book_close_banner.inputs:Color>
                 color3f inputs:emissiveColor.connect = </Book/Materials/book_close_banner.inputs:Color>
                 float inputs:ior
-                float inputs:metallic
-                float3 inputs:normal
+                float inputs:metallic.connect = </Book/Materials/book_close_banner/Roughness.outputs:out>
+                float3 inputs:normal.connect = None
                 float inputs:occlusion
                 float inputs:opacity
-                float inputs:roughness
+                float inputs:roughness.connect = None
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-247.97656, 89.60156)
                 float2 ui:nodegraph:node:size = (159.5, 307)
                 int ui:nodegraph:node:stackingOrder = 3
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            def Shader "Roughness"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Paper Roughness.png@
+                string inputs:filtertype
+                string inputs:uaddressmode
+                string inputs:vaddressmode
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-748.3047, 232.41406)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 21
             }
         }
 

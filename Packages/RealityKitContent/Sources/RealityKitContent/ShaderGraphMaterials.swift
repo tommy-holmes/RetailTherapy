@@ -14,12 +14,14 @@ public extension Entity {
         return modelComponent.materials[index] as? ShaderGraphMaterial
     }
     
-    func update(shaderGraphMaterial oldMaterial: ShaderGraphMaterial, index: Int, _ handler: (inout ShaderGraphMaterial) throws -> Void) rethrows {
+    func update(shaderGraphMaterial oldMaterial: ShaderGraphMaterial, 
+                geoSubsetIndex: Int,
+                _ handler: (inout ShaderGraphMaterial) throws -> Void) rethrows {
         var material = oldMaterial
         try handler(&material)
         
         if var component = modelComponent {
-            component.materials[index] = material
+            component.materials[geoSubsetIndex] = material
             components.set(component)
         }
     }

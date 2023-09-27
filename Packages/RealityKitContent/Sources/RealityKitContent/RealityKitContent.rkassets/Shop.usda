@@ -5,12 +5,12 @@
     upAxis = "Y"
 )
 
-reorder rootPrims = ["Store", "Materials"]
-
 def Xform "Store"
 {
     reorder nameChildren = ["Ceiling", "Floor", "Wall_E", "Wall_W", "Wall_N", "Wall_S", "Shelf_1", "Bracket_Right", "Bracket_Left", "Item_1", "Item_2", "Item_3", "Materials"]
-    float3 xformOp:translate = (0, 0, 0)
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, 9.5160395e-8, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     def Cube "Ceiling" (
@@ -171,6 +171,7 @@ def Xform "Store"
         over "WoodPlank"
         {
             reorder nameChildren = ["UsdPreviewSurface", "MaterialXPreviewSurface", "Basecolor", "Metallic", "add", "multiply", "Normal", "Roughness"]
+            token outputs:mtlx:surface.connect = </Store/Materials/WoodPlank/MaterialXPreviewSurface.outputs:out>
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
 
             over "Basecolor"
@@ -192,25 +193,32 @@ def Xform "Store"
 
             over "MaterialXPreviewSurface"
             {
+                color3f inputs:diffuseColor.connect = </Store/Materials/WoodPlank/Basecolor.outputs:out>
+                float inputs:metallic.connect = </Store/Materials/WoodPlank/Metallic.outputs:out>
+                float3 inputs:normal.connect = </Store/Materials/WoodPlank/add.outputs:out>
+                float inputs:roughness.connect = </Store/Materials/WoodPlank/Roughness.outputs:out>
                 float2 ui:nodegraph:node:size = (207.5, 199)
                 int ui:nodegraph:node:stackingOrder = 838
             }
 
             over "add"
             {
+                float3 inputs:in1.connect = </Store/Materials/WoodPlank/multiply.outputs:out>
                 float2 ui:nodegraph:node:size = (61.5, 36.5)
-                int ui:nodegraph:node:stackingOrder = 843
+                int ui:nodegraph:node:stackingOrder = 848
             }
 
             over "multiply"
             {
+                float3 inputs:in1.connect = </Store/Materials/WoodPlank/Normal.outputs:out>
                 float2 ui:nodegraph:node:size = (60, 36)
-                int ui:nodegraph:node:stackingOrder = 842
+                int ui:nodegraph:node:stackingOrder = 847
             }
 
             over "Normal"
             {
                 float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 850
             }
         }
 
@@ -279,6 +287,7 @@ def Xform "Store"
 
         over "GlossyBlackWoodPlank"
         {
+            token outputs:mtlx:surface.connect = </Store/Materials/GlossyBlackWoodPlank/MaterialXPreviewSurface.outputs:out>
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
 
             over "Basecolor"
@@ -305,7 +314,9 @@ def Xform "Store"
 
             over "MaterialXPreviewSurface"
             {
+                color3f inputs:diffuseColor.connect = </Store/Materials/GlossyBlackWoodPlank/Basecolor.outputs:out>
                 float inputs:metallic.connect = None
+                float3 inputs:normal.connect = </Store/Materials/GlossyBlackWoodPlank/add.outputs:out>
                 float inputs:roughness.connect = </Store/Materials/GlossyBlackWoodPlank/Roughness.outputs:out>
                 float2 ui:nodegraph:node:size = (207.5, 307)
                 int ui:nodegraph:node:stackingOrder = 842
@@ -314,6 +325,7 @@ def Xform "Store"
 
             over "add"
             {
+                float3 inputs:in1.connect = </Store/Materials/GlossyBlackWoodPlank/multiply.outputs:out>
                 float2 ui:nodegraph:node:pos = (85.28893, 587.96356)
                 float2 ui:nodegraph:node:size = (61.5, 36.5)
                 int ui:nodegraph:node:stackingOrder = 879
@@ -321,6 +333,7 @@ def Xform "Store"
 
             over "multiply"
             {
+                float3 inputs:in1.connect = </Store/Materials/GlossyBlackWoodPlank/Normal.outputs:out>
                 float2 ui:nodegraph:node:pos = (-2.4831948, 590.0799)
                 float2 ui:nodegraph:node:size = (60, 36)
                 int ui:nodegraph:node:stackingOrder = 879
@@ -337,7 +350,7 @@ def Xform "Store"
 
         def Material "Floor"
         {
-            prepend token outputs:mtlx:surface.connect = </Store/Materials/Floor/PreviewSurface.outputs:out>
+            token outputs:mtlx:surface.connect = </Store/Materials/Floor/PreviewSurface.outputs:out>
             token outputs:realitykit:vertex
             float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (385.73343, 99.5)
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
@@ -456,6 +469,29 @@ def Xform "Store"
                 float2 ui:nodegraph:node:pos = (-373.71088, 199.52237)
                 float2 ui:nodegraph:node:size = (148.5, 199)
                 int ui:nodegraph:node:stackingOrder = 41
+            }
+        }
+
+        over "MaplePlywood"
+        {
+            token outputs:mtlx:surface.connect = </Store/Materials/MaplePlywood/MaterialXPreviewSurface.outputs:out>
+
+            over "MaterialXPreviewSurface"
+            {
+                color3f inputs:diffuseColor.connect = </Store/Materials/MaplePlywood/Basecolor.outputs:out>
+                float inputs:metallic.connect = </Store/Materials/MaplePlywood/Metallic.outputs:out>
+                float3 inputs:normal.connect = </Store/Materials/MaplePlywood/add.outputs:out>
+                float inputs:roughness.connect = </Store/Materials/MaplePlywood/Roughness.outputs:out>
+            }
+
+            over "add"
+            {
+                float3 inputs:in1.connect = </Store/Materials/MaplePlywood/multiply.outputs:out>
+            }
+
+            over "multiply"
+            {
+                float3 inputs:in1.connect = </Store/Materials/MaplePlywood/Normal.outputs:out>
             }
         }
     }
