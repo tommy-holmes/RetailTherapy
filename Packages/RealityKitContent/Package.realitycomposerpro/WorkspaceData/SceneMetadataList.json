@@ -11,6 +11,58 @@
       }
     ]
   },
+  "3E23E797-3FE3-4E52-BDBC-7ADC694312AE" : {
+    "objectMetadataList" : [
+      [
+        "3E23E797-3FE3-4E52-BDBC-7ADC694312AE",
+        "NoteBook",
+        "Materials",
+        "book_close"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E23E797-3FE3-4E52-BDBC-7ADC694312AE",
+        "Notebook",
+        "Materials",
+        "book_close_banner"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E23E797-3FE3-4E52-BDBC-7ADC694312AE",
+        "Notebook"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E23E797-3FE3-4E52-BDBC-7ADC694312AE",
+        "NoteBook",
+        "Materials",
+        "book_close_banner"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E23E797-3FE3-4E52-BDBC-7ADC694312AE",
+        "Notebook",
+        "Materials",
+        "book_close"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "7A75E6DD-65A9-453A-95A6-AB25ECAF64C0" : {
     "objectMetadataList" : [
 
@@ -30,8 +82,7 @@
       },
       [
         "26F2AE47-05D0-433C-A0E3-FB623AAB8997",
-        "Whiskey",
-        "Materials"
+        "Whiskey"
       ],
       {
         "isExpanded" : true,
@@ -39,7 +90,8 @@
       },
       [
         "26F2AE47-05D0-433C-A0E3-FB623AAB8997",
-        "Whiskey"
+        "Whiskey",
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -56,17 +108,7 @@
     "objectMetadataList" : [
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Materials_1",
-        "libro"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Notebok",
-        "Plane_geometry"
+        "Notebook"
       ],
       {
         "isExpanded" : true,
@@ -76,15 +118,6 @@
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
         "Notebook",
         "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Notebook",
-        "body"
       ],
       {
         "isExpanded" : true,
@@ -102,7 +135,26 @@
       },
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Notebook"
+        "Notebook",
+        "body"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Notebok",
+        "Plane_geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Materials_1",
+        "libro"
       ],
       {
         "isExpanded" : true,
@@ -126,8 +178,7 @@
     "objectMetadataList" : [
       [
         "88C5B37B-537F-4D91-9349-4C08E80FD7F0",
-        "Materials",
-        "MaplePlywood"
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -135,7 +186,8 @@
       },
       [
         "88C5B37B-537F-4D91-9349-4C08E80FD7F0",
-        "Materials"
+        "Materials",
+        "MaplePlywood"
       ],
       {
         "isExpanded" : true,
@@ -170,67 +222,8 @@
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "bottle",
-        "Materials",
-        "STL_material"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle_Materials",
-        "cork_material"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle",
-        "bottle",
-        "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle",
-        "Materials",
-        "cork_material"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle",
-        "Whiskey",
-        "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
-        "Bottle",
-        "bottle",
-        "Materials",
-        "Material"
+        "body_material"
       ],
       {
         "isExpanded" : true,
@@ -249,9 +242,27 @@
       },
       [
         "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
         "Bottle",
-        "Bottle_Materials",
-        "body_material"
+        "Whiskey",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle",
+        "bottle",
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -262,6 +273,47 @@
         "Bottle",
         "Materials",
         "body_material_"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle",
+        "bottle",
+        "Materials",
+        "STL_material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle",
+        "Materials",
+        "cork_material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle_Materials",
+        "cork_material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5483EF9B-AF5C-453E-B313-C2BA2BCFB91D",
+        "Bottle",
+        "bottle",
+        "Materials",
+        "Material"
       ],
       {
         "isExpanded" : true,
@@ -284,6 +336,56 @@
   "86157EF1-48F0-43B3-82F7-23C36FDE8EFC" : {
     "objectMetadataList" : [
 
+    ]
+  },
+  "A85873F1-1EF5-49C7-835D-73347192CCCA" : {
+    "objectMetadataList" : [
+      [
+        "A85873F1-1EF5-49C7-835D-73347192CCCA",
+        "Book",
+        "Materials",
+        "book_close_banner"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A85873F1-1EF5-49C7-835D-73347192CCCA",
+        "Book",
+        "geo"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A85873F1-1EF5-49C7-835D-73347192CCCA",
+        "Book"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A85873F1-1EF5-49C7-835D-73347192CCCA",
+        "Book",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A85873F1-1EF5-49C7-835D-73347192CCCA",
+        "Book",
+        "Materials",
+        "book_close"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
     ]
   },
   "A7034894-6C7F-449B-8C26-8A21CBEC8961" : {
@@ -347,7 +449,8 @@
     "objectMetadataList" : [
       [
         "D560BB77-AAF3-4BDE-B7C4-989332A4688B",
-        "Store"
+        "Store",
+        "Cube"
       ],
       {
         "isExpanded" : true,
@@ -355,8 +458,7 @@
       },
       [
         "D560BB77-AAF3-4BDE-B7C4-989332A4688B",
-        "Store",
-        "Cube"
+        "Store"
       ],
       {
         "isExpanded" : true,
@@ -368,9 +470,7 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -378,7 +478,9 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -395,11 +497,30 @@
     "objectMetadataList" : [
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store"
+        "Store",
+        "Shelf_1"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_S"
       ],
       {
         "isExpanded" : true,
-        "isLocked" : false
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Cube_1"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
@@ -414,42 +535,6 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Wall_3"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "room",
-        "Mesh_grp"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_2"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_W"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "room",
         "Mesh_grp"
       ],
@@ -469,16 +554,53 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Wall_S"
+        "Materials",
+        "WoodPlank"
       ],
       {
         "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Materials",
+        "GlossyBlackWoodPlank"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Cube"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C"
+      ],
+      {
+        "isExpanded" : false,
         "isLocked" : true
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Materials"
+        "Book"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Materials",
+        "Floor"
       ],
       {
         "isExpanded" : true,
@@ -497,35 +619,7 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Cube_1"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_E"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Materials",
-        "GlossyBlackWoodPlank"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Wall_4"
+        "Wall_3"
       ],
       {
         "isExpanded" : false,
@@ -542,13 +636,39 @@
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Materials",
-        "Floor"
+        "room",
+        "Mesh_grp"
       ],
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_E"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_W"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store",
+        "Wall_4"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
       },
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
@@ -564,17 +684,7 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Cube"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : true
-      },
-      [
-        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
-        "Store",
-        "Materials",
-        "WoodPlank"
+        "Floor"
       ],
       {
         "isExpanded" : true,
@@ -583,7 +693,15 @@
       [
         "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
         "Store",
-        "Floor"
+        "Wall_2"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : true
+      },
+      [
+        "E38957ED-D601-4FD7-9ECB-0F6A06F77D2C",
+        "Store"
       ],
       {
         "isExpanded" : true,
@@ -595,6 +713,8 @@
     "objectMetadataList" : [
       [
         "EC461BD0-B71A-45C0-872C-14285747C200",
+        "Mug",
+        "Materials",
         "Mug"
       ],
       {
@@ -603,8 +723,6 @@
       },
       [
         "EC461BD0-B71A-45C0-872C-14285747C200",
-        "Mug",
-        "Materials",
         "Mug"
       ],
       {

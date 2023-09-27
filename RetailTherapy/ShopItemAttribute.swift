@@ -56,11 +56,12 @@ extension Library {
     struct Color: ShopItemAttribute {
         var entity: RealityKit.Entity?
         var name: String = ""
+        var geoSubsetIndex: Int = 0
         
         var value: SwiftUI.Color {
             get {
                 guard
-                    let material = entity?.shaderGraphMaterial
+                    let material = entity?.shaderGraphMaterial(at: geoSubsetIndex)
                 else { return .primary }
                 
                 guard case .color(let value) = material.getParameter(name: "Color") else { return .primary }
@@ -69,10 +70,10 @@ extension Library {
             
             nonmutating set {
                 guard
-                    let material = entity?.shaderGraphMaterial
+                    let material = entity?.shaderGraphMaterial(at: geoSubsetIndex)
                 else { return }
                 
-                entity?.update(shaderGraphMaterial: material) { mat in
+                entity?.update(shaderGraphMaterial: material, index: geoSubsetIndex) { mat in
                     try! mat.setParameter(name: "Color", value: .color(UIColor(newValue)))
                 }
             }

@@ -346,36 +346,37 @@ def Xform "Store"
             def Shader "Roughness"
             {
                 uniform token info:id = "ND_image_float"
-                asset inputs:file = @@
+                asset inputs:file = @Floor/Pale_Oak_Chevron_Flooring_mask.png@
                 string inputs:filtertype
                 float outputs:out
                 float2 ui:nodegraph:node:pos = (-290.65625, 144.76953)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 34
+                int ui:nodegraph:node:stackingOrder = 41
             }
 
             def Shader "BaseColor"
             {
                 uniform token info:id = "ND_image_color3"
-                asset inputs:file = @@
+                asset inputs:file = @Floor/Pale_Oak_Chevron_Flooring_baseColor.png@
                 string inputs:filtertype
                 color3f outputs:out
                 float2 ui:nodegraph:node:pos = (-233.02734, -92.4375)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 39
+                int ui:nodegraph:node:stackingOrder = 40
             }
 
             def Shader "Normal"
             {
                 uniform token info:id = "ND_image_vector3"
-                asset inputs:file = @@
+                asset inputs:file = @Floor/Pale_Oak_Chevron_Flooring_normal.png@
                 string inputs:filtertype
                 string inputs:uaddressmode
                 string inputs:vaddressmode
                 float3 outputs:out
                 float2 ui:nodegraph:node:pos = (-217.79192, 370.5631)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 32
+                int ui:nodegraph:node:stackingOrder = 42
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:texcoord"]
             }
 
             def Shader "PreviewSurface"

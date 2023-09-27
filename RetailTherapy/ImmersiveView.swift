@@ -28,9 +28,9 @@ struct ImmersiveView: View {
                 content.add(storeEntity)
                 content.add(generateSkybox())
                 
-//                let resource = try await EnvironmentResource(named: "ImageBasedLight")
-//                storeEntity.components.set(ImageBasedLightComponent(source: .single(resource), intensityExponent: 1))
-//                storeEntity.components.set(ImageBasedLightReceiverComponent(imageBasedLight: storeEntity))
+                let resource = try await EnvironmentResource(named: "ImageBasedLight")
+                storeEntity.components.set(ImageBasedLightComponent(source: .single(resource), intensityExponent: 100))
+                storeEntity.components.set(ImageBasedLightReceiverComponent(imageBasedLight: storeEntity))
             } catch {
                 print("Error in RealityView's make: \(error)")
             }
@@ -65,7 +65,7 @@ struct ImmersiveView: View {
             await entity.children.append(item.entity)
             model.items.append(item)
         }
-        
+        entity.components.set(GroundingShadowComponent(castsShadow: true))
         entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))
     }
     

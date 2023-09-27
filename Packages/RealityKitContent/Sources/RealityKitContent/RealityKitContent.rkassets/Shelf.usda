@@ -112,5 +112,12 @@ def Xform "Shelf" (
             }
         }
     }
+
+    def RealityKitComponent "GroundingShadow"
+    {
+        bool enableIBLShadow = 1
+        bool enableMeshShadow = 1
+        uniform token info:id = "RealityKit.GroundingShadow"
+    }
 }
 

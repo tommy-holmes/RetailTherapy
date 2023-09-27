@@ -5,24 +5,27 @@ public extension Entity {
         components[ModelComponent.self]
     }
     
-    var shaderGraphMaterial: ShaderGraphMaterial? {
-        modelComponent?.materials.first as? ShaderGraphMaterial
+    func shaderGraphMaterial(at index: Int) -> ShaderGraphMaterial? {
+        guard
+            let modelComponent,
+                modelComponent.materials.count > index
+        else { return nil }
+        
+        return modelComponent.materials[index] as? ShaderGraphMaterial
     }
     
-    func update(shaderGraphMaterial oldMaterial: ShaderGraphMaterial, _ handler: (inout ShaderGraphMaterial) throws -> Void) rethrows {
+    func update(shaderGraphMaterial oldMaterial: ShaderGraphMaterial, index: Int, _ handler: (inout ShaderGraphMaterial) throws -> Void) rethrows {
         var material = oldMaterial
         try handler(&material)
         
         if var component = modelComponent {
-            component.materials = [material]
+            component.materials[index] = material
             components.set(component)
         }
     }
-    
-    var parameterNames: [String] {
-        shaderGraphMaterial?.parameterNames ?? []
-    }
-    
+}
+
+public extension ShaderGraphMaterial {
     func hasMaterialParameter(named: String) -> Bool {
         parameterNames.contains(where: { $0 == named })
     }
