@@ -99,7 +99,9 @@ struct ImmersiveView: View {
         
         var body: some View {
             Text(label)
-                .font(.title)
+                .padding(.horizontal)
+                .font(.system(size: 96))
+                .fontWeight(.semibold)
                 .padding()
                 .glassBackgroundEffect()
         }
