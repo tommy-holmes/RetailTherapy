@@ -8,11 +8,11 @@ struct ImmersiveView: View {
     @State private var attatchmentsProvider = AttatchmentsProvider()
     @State private var subscriptions: [EventSubscription] = []
     
-    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
-//    static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
+//    static private let itemsQuery = EntityQuery(where: .has(CustomizableItemComponent.self))
+    static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
     
     var body: some View {
-        RealityView { content in
+        RealityView { content, _  in
             do {
                 subscriptions.append(content.subscribe(
                     to: ComponentEvents.DidAdd.self,
@@ -35,17 +35,23 @@ struct ImmersiveView: View {
                 print("Error in RealityView's make: \(error)")
             }
             
-        } update: { content in
+        } update: { content, attatchments in
             // TODO: Add labels to the shop items
             
-//            model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
-//                guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
-//                guard let attachmentEntity = attatchments.entity(for: selectedTag) else { return }
+            model.rootEntity?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
+                guard let component = entity.components[CustomizableItemRuntimeComponent.self] else { return }
+                guard let attachmentEntity = attatchments.entity(for: component.attachmentTag) else { return }
                 
-//                model.rootEntity?.addChild(attachmentEntity)
-//                attachmentEntity.setPosition([-0.75, 0, 0], relativeTo: entity)
-//            }
+                model.rootEntity?.addChild(attachmentEntity)
+                attachmentEntity.setPosition([0, 0.75, 0], relativeTo: entity)
+            }
             
+        } attachments: {
+            ForEach(attatchmentsProvider.sortedTagViewPairs, id: \.tag) { pair in
+                Attachment(id: pair.tag) {
+                    pair.view
+                }
+            }
         }
     }
     
@@ -54,6 +60,7 @@ struct ImmersiveView: View {
         guard let component = entity.components[CustomizableItemComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
+        let view = LabelView(label: component.assetName)
         
         Task {
             let item: ShopItem = switch component.itemType {
@@ -67,6 +74,7 @@ struct ImmersiveView: View {
         }
 //        entity.components.set(GroundingShadowComponent(castsShadow: true))
         entity.components.set(CustomizableItemRuntimeComponent(attachmentTag: tag))
+        attatchmentsProvider.attachments[tag] = AnyView(view)
     }
     
     private func generateSkybox() -> Entity {
@@ -84,6 +92,17 @@ struct ImmersiveView: View {
         entity.scale *= .init(x: -1, y: 1, z: 1)
         
         return entity
+    }
+    
+    private struct LabelView: View {
+        let label: String
+        
+        var body: some View {
+            Text(label)
+                .font(.title)
+                .padding()
+                .glassBackgroundEffect()
+        }
     }
 }
 

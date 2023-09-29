@@ -58,23 +58,27 @@ extension Library {
         var name: String = ""
         var geoSubsetIndex: Int = 0
         
+        private let parameterName = "Color"
+        
         var value: SwiftUI.Color {
             get {
                 guard
-                    let material = entity?.shaderGraphMaterial(at: geoSubsetIndex)
+                    let material = entity?.shaderGraphMaterial(at: geoSubsetIndex),
+                    material.hasMaterialParameter(named: parameterName)
                 else { return .primary }
                 
-                guard case .color(let value) = material.getParameter(name: "Color") else { return .primary }
+                guard case .color(let value) = material.getParameter(name: parameterName) else { return .primary }
                 return SwiftUI.Color(cgColor: value)
             }
             
             nonmutating set {
                 guard
-                    let material = entity?.shaderGraphMaterial(at: geoSubsetIndex)
+                    let material = entity?.shaderGraphMaterial(at: geoSubsetIndex),
+                    material.hasMaterialParameter(named: parameterName)
                 else { return }
                 
                 entity?.update(shaderGraphMaterial: material, geoSubsetIndex: geoSubsetIndex) { mat in
-                    try! mat.setParameter(name: "Color", value: .color(UIColor(newValue)))
+                    try! mat.setParameter(name: parameterName, value: .color(UIColor(newValue)))
                 }
             }
         }
