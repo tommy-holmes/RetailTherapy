@@ -26,12 +26,18 @@ struct ShopItem: Identifiable {
 
 extension ShopItem {
     static var bottle: () async -> Self = {
-        try! await ShopItem(named: "Bottle") {
-            Library.Entity(named: "cork") {
-                Library.Color(name: "Cork Colour")
+        try! await ShopItem(named: "Moo Bottle") {
+            Library.Entity(named: "cap") {
+                Library.Color(name: "Cap Colour")
             }
-            Library.Entity(named: "body") {
-                Library.Color(name: "Body Colour")
+            Library.Entity(named: "handle") {
+                Library.Color(name: "Handle Colour")
+            }
+            Library.Entity(named: "bands") {
+                Library.Color(name: "Bands Colour")
+            }
+            Library.Entity(named: "logo") {
+                Library.Color(name: "Logo Colour")
             }
         }
     }

@@ -12,7 +12,7 @@ struct ImmersiveView: View {
     static private let runtimeQuery = EntityQuery(where: .has(CustomizableItemRuntimeComponent.self))
     
     var body: some View {
-        RealityView { content, _  in
+        RealityView { content, _ in
             do {
                 subscriptions.append(content.subscribe(
                     to: ComponentEvents.DidAdd.self,
@@ -100,8 +100,7 @@ struct ImmersiveView: View {
         var body: some View {
             Text(label)
                 .padding(.horizontal)
-                .font(.system(size: 96))
-                .fontWeight(.semibold)
+                .font(.system(size: 96, weight: .semibold))
                 .padding()
                 .glassBackgroundEffect()
         }
