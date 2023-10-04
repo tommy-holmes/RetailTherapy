@@ -43,12 +43,9 @@ extension ShopItem {
     }
     
     static var notebook: () async -> Self = {
-        try! await ShopItem(named: "Book") {
-            Library.Entity(named: "geo") {
-                Library.Color(name: "Cover Colour", geoSubsetIndex: 0)
-            }
-            Library.Entity(named: "geo") {
-                Library.Color(name: "Banner Colour", geoSubsetIndex: 1)
+        try! await ShopItem(named: "Moo Notebook") {
+            Library.Entity(named: "Notebook_geometry") {
+                Library.Color(name: "Cover Colour")
             }
         }
     }

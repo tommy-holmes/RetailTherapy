@@ -208,6 +208,8 @@ def "Moo_Bottle" (
         {
             token outputs:mtlx:surface
             token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
 
             over "bottlePreviewSurface"
             {
