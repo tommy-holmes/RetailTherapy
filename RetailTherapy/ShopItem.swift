@@ -45,11 +45,11 @@ extension ShopItem {
     }
     
     static var notebook: () async -> Self = {
-        try! await ShopItem(named: "Brand Notebook") {
+        try! await ShopItem(named: "Notebook") {
             Library.Entity(named: "Notebook_geometry") {
                 Library.Color(name: "Cover Colour")
             }
-            Library.Entity(named: "BookTitle_geometry") {
+            Library.Entity(named: "Logo_geometry") {
                 Library.Color(name: "Logo Colour")
             }
         }

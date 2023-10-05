@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A61DBFF42AC3260600D0F2D6 /* ImageBasedLight.exr in Resources */ = {isa = PBXBuildFile; fileRef = A61DBFF32AC3260600D0F2D6 /* ImageBasedLight.exr */; };
 		A620EE092AAB27820041F2EE /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620EE082AAB27820041F2EE /* ShopItem.swift */; };
 		A631EF1A2AB46B52000C6C28 /* ShopItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */; };
 		A66FED732A6E914000AAC4F6 /* AttatchmentsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */; };
 		A66FED752A6E98E000AAC4F6 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED742A6E98E000AAC4F6 /* StoreModel.swift */; };
 		A66FED772A6E9D0E00AAC4F6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED762A6E9D0E00AAC4F6 /* Components.swift */; };
+		A6B4DD232ACF12E000DF30DC /* Lighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = A6B4DD222ACF12E000DF30DC /* Lighting.skybox */; };
 		A6FD78D42A6937B5004B2FFB /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = A6FD78D32A6937B5004B2FFB /* RealityKitContent */; };
 		A6FD78D62A6937B5004B2FFB /* RetailTherapyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */; };
 		A6FD78D82A6937B5004B2FFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D72A6937B5004B2FFB /* ContentView.swift */; };
@@ -22,12 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A61DBFF32AC3260600D0F2D6 /* ImageBasedLight.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImageBasedLight.exr; sourceTree = "<group>"; };
 		A620EE082AAB27820041F2EE /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
 		A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemAttribute.swift; sourceTree = "<group>"; };
 		A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttatchmentsProvider.swift; sourceTree = "<group>"; };
 		A66FED742A6E98E000AAC4F6 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		A66FED762A6E9D0E00AAC4F6 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		A6B4DD222ACF12E000DF30DC /* Lighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = Lighting.skybox; sourceTree = "<group>"; };
 		A6FD78CE2A6937B5004B2FFB /* RetailTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetailTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD78D22A6937B5004B2FFB /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetailTherapyApp.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 				A620EE082AAB27820041F2EE /* ShopItem.swift */,
 				A631EF192AB46B52000C6C28 /* ShopItemAttribute.swift */,
 				A66FED722A6E914000AAC4F6 /* AttatchmentsProvider.swift */,
-				A61DBFF32AC3260600D0F2D6 /* ImageBasedLight.exr */,
+				A6B4DD222ACF12E000DF30DC /* Lighting.skybox */,
 				A6FD78DD2A6937B6004B2FFB /* Assets.xcassets */,
 				A6FD78DF2A6937B6004B2FFB /* Preview Content */,
 			);
@@ -162,8 +162,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6FD78DE2A6937B6004B2FFB /* Assets.xcassets in Resources */,
-				A61DBFF42AC3260600D0F2D6 /* ImageBasedLight.exr in Resources */,
 				A6FD78E12A6937B6004B2FFB /* Preview Assets.xcassets in Resources */,
+				A6B4DD232ACF12E000DF30DC /* Lighting.skybox in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

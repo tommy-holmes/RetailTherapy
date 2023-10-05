@@ -27,7 +27,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Customise \(model.item(id: model.selectedItem)?.entity.name ?? "")")
+            .navigationTitle("Customise \(model.item(id: model.selectedItem)?.name ?? "")")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {

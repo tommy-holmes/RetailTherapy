@@ -28,8 +28,8 @@ struct ImmersiveView: View {
                 content.add(storeEntity)
                 content.add(generateSkybox())
                 
-                let resource = try await EnvironmentResource(named: "ImageBasedLight.exr")
-                storeEntity.components.set(ImageBasedLightComponent(source: .single(resource), intensityExponent: 1))
+                let resource = try await EnvironmentResource(named: "ImageBasedLight")
+                storeEntity.components.set(ImageBasedLightComponent(source: .single(resource), intensityExponent: 0.2))
                 storeEntity.components.set(ImageBasedLightReceiverComponent(imageBasedLight: storeEntity))
             } catch {
                 print("Error in RealityView's make: \(error)")
