@@ -13,10 +13,9 @@ def "Moo_Notebook" (
     references = @Moo Notebook.usdz@
 )
 {
-    reorder nameChildren = ["Materials", "Light", "Camera", "Notebook", "Notebook_1", "Material"]
     quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
     float3 xformOp:scale = (0.03, 0.03, 0.03)
-    float3 xformOp:translate = (0, 0.24, -2.561137e-9)
+    float3 xformOp:translate = (0, 0.22483584, 1.1175871e-8)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     over "Light" (
@@ -33,16 +32,22 @@ def "Moo_Notebook" (
 
     over "Materials"
     {
-        reorder nameChildren = ["Logo", "Cover", "BookCover", "BookSide", "BookCoverTitle"]
+        over "BookSide"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        }
+
         over "BookCover"
         {
-            color3f inputs:Color = (0, 0.98106676, 0.5736914) (
+            color3f inputs:Color = (0.5807225, 0.06673408, 0) (
                 colorSpace = "srgb_texture"
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-575.3633, 110.01172)
+                        float2 positionInSubgraph = (-519.6758, 72.09375)
                         float2 sizeInSubgraph = (133, 53)
-                        int stackingOrderInSubgraph = 1
                     }
                 }
             )
@@ -61,33 +66,25 @@ def "Moo_Notebook" (
             def Shader "PreviewSurface"
             {
                 uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
-                float inputs:clearcoat
-                float inputs:clearcoatRoughness
                 color3f inputs:diffuseColor.connect = </Moo_Notebook/Materials/BookCover.inputs:Color>
-                color3f inputs:emissiveColor.connect = </Moo_Notebook/Materials/BookCover.inputs:Color>
-                float inputs:ior
-                float inputs:metallic
-                float3 inputs:normal
-                float inputs:occlusion
-                float inputs:opacity
                 float inputs:roughness
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-255, 105)
-                float2 ui:nodegraph:node:size = (159.5, 307)
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                float2 ui:nodegraph:node:size = (148.5, 199)
             }
-        }
-
-        over "BookSide"
-        {
-            token outputs:mtlx:surface
-            token outputs:realitykit:vertex
-            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
-            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
         }
 
         over "BookCoverTitle"
         {
+            color4f inputs:Color = (0.5807225, 0.06673408, 0, 1) (
+                colorSpace = "srgb_texture"
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-867.29297, 183.70312)
+                        float2 sizeInSubgraph = (133, 53)
+                    }
+                }
+            )
             prepend token outputs:mtlx:surface.connect = </Moo_Notebook/Materials/BookCoverTitle/PreviewSurface.outputs:out>
             token outputs:realitykit:vertex
             token outputs:surface.connect = </Moo_Notebook/Materials/BookCoverTitle/BookCoverTitlePreviewSurface.outputs:surface>
@@ -105,57 +102,68 @@ def "Moo_Notebook" (
                 uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
                 float inputs:clearcoat
                 float inputs:clearcoatRoughness
-                color3f inputs:diffuseColor.connect = </Moo_Notebook/Materials/BookCoverTitle/Color.outputs:out>
-                color3f inputs:emissiveColor.connect = </Moo_Notebook/Materials/BookCoverTitle/Logo.outputs:out>
+                color3f inputs:diffuseColor.connect = </Moo_Notebook/Materials/BookCoverTitle/Convert.outputs:out>
+                color3f inputs:emissiveColor.connect = None
                 float inputs:ior
                 float inputs:metallic
                 float3 inputs:normal
                 float inputs:occlusion
                 float inputs:opacity
-                float inputs:opacityThreshold
                 float inputs:roughness
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-255, 105)
                 float2 ui:nodegraph:node:size = (159.5, 307)
-                int ui:nodegraph:node:stackingOrder = 15
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            def Shader "Over"
+            {
+                uniform token info:id = "ND_over_color4"
+                color4f inputs:bg.connect = </Moo_Notebook/Materials/BookCoverTitle.inputs:Color>
+                color4f inputs:fg.connect = </Moo_Notebook/Materials/BookCoverTitle/Logo.outputs:out>
+                float inputs:mix
+                color4f outputs:out
+                float2 ui:nodegraph:node:pos = (-621.2031, 44.234375)
+                float2 ui:nodegraph:node:size = (109, 145)
+                int ui:nodegraph:node:stackingOrder = 22
             }
 
             def Shader "Logo"
             {
-                uniform token info:id = "ND_image_color3"
-                color3f inputs:default
+                uniform token info:id = "ND_image_color4"
                 asset inputs:file = @Frame 3.png@
                 string inputs:filtertype
                 float2 inputs:texcoord
                 string inputs:uaddressmode
                 string inputs:vaddressmode
-                color3f outputs:out
-                float2 ui:nodegraph:node:pos = (-649.7656, 192.82812)
+                color4f outputs:out
+                float2 ui:nodegraph:node:pos = (-808.72266, -31.472656)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 32
+                int ui:nodegraph:node:stackingOrder = 9
             }
 
-            def Shader "Color"
+            def Shader "Convert"
             {
-                uniform token info:id = "ND_constant_color3"
-                color3f inputs:value = (0, 0.98106676, 0.5736914) (
-                    colorSpace = "srgb_texture"
-                )
+                uniform token info:id = "ND_convert_color4_color3"
+                prepend color4f inputs:in.connect = </Moo_Notebook/Materials/BookCoverTitle/Over.outputs:out>
                 color3f outputs:out
-                float2 ui:nodegraph:node:pos = (-595.08594, -69.921875)
-                float2 ui:nodegraph:node:size = (151, 53)
-                int ui:nodegraph:node:stackingOrder = 23
+                float2 ui:nodegraph:node:pos = (-455.71484, 74.84766)
+                float2 ui:nodegraph:node:size = (135.5, 40)
+                int ui:nodegraph:node:stackingOrder = 19
             }
         }
     }
 
     over "Notebook"
     {
-        quatf xformOp:orient = (0.7071067, -0.7071068, 4.608094e-7, -4.608093e-7)
-        float3 xformOp:scale = (5.5, 7.5000005, 1)
-        float3 xformOp:translate = (0, 1.0638001, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        reorder nameChildren = ["BookTitle", "Notebook_geometry"]
+        over "BookTitle"
+        {
+            reorder nameChildren = ["BookTitle_geometry", "BookTitle_geometry_1"]
+            over "BookTitle_geometry"
+            {
+            }
+        }
     }
 }
 

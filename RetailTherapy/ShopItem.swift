@@ -3,10 +3,12 @@ import RealityKit
 import RealityKitContent
 
 struct ShopItem: Identifiable {
+    let name: String
     var entity: RealityKit.Entity
     var entities: [Library.Entity]
     
     init(named name: String, @EntityBuilder entities: () async -> [Library.Entity]) async throws {
+        self.name = name
         let entity = try await RealityKit.Entity(named: name, in: realityKitContentBundle)
         
         self.entities = await entities().map {
@@ -43,9 +45,12 @@ extension ShopItem {
     }
     
     static var notebook: () async -> Self = {
-        try! await ShopItem(named: "Moo Notebook") {
+        try! await ShopItem(named: "Brand Notebook") {
             Library.Entity(named: "Notebook_geometry") {
                 Library.Color(name: "Cover Colour")
+            }
+            Library.Entity(named: "BookTitle_geometry") {
+                Library.Color(name: "Logo Colour")
             }
         }
     }
