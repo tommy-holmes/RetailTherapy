@@ -148,8 +148,7 @@
     "objectMetadataList" : [
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Notebook",
-        "Materials",
+        "Materials_1",
         "libro"
       ],
       {
@@ -158,7 +157,9 @@
       },
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Notebook"
+        "Notebook",
+        "Materials",
+        "BookCover"
       ],
       {
         "isExpanded" : true,
@@ -167,7 +168,8 @@
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
         "Notebook",
-        "body"
+        "Notebook",
+        "Notebook_geometry"
       ],
       {
         "isExpanded" : true,
@@ -184,6 +186,52 @@
       },
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Notebook",
+        "Notebook"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Notebook",
+        "Materials",
+        "BookCoverTitle"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Notebook"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Notebook",
+        "Materials",
+        "libro"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
+        "Notebook",
+        "body"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
         "Notebok",
         "Plane_geometry"
       ],
@@ -193,8 +241,8 @@
       },
       [
         "55D4D4B9-89E3-47D8-9B16-C0A520BB38A8",
-        "Materials_1",
-        "libro"
+        "Notebook",
+        "Logo"
       ],
       {
         "isExpanded" : true,

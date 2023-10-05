@@ -1,59 +1,39 @@
 #usda 1.0
 (
-    defaultPrim = "Moo_Notebook"
+    defaultPrim = "Notebook"
     metersPerUnit = 1
     upAxis = "Y"
 )
 
-def "Moo_Notebook" (
+def "Notebook" (
     active = true
     customData = {
         float3 rotationEulerHint = (1.5707964, 0, 0)
     }
-    references = @Moo Notebook.usdz@
+    references = @Notebook Edit.usdz@
 )
 {
     quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
     float3 xformOp:scale = (0.03, 0.03, 0.03)
-    float3 xformOp:translate = (0, 0.22483584, 1.1175871e-8)
+    float3 xformOp:translate = (0, 0.23, 5.122274e-9)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-    over "Light" (
-        active = false
-    )
-    {
-    }
-
-    over "Camera" (
-        active = false
-    )
-    {
-    }
 
     over "Materials"
     {
-        over "BookSide"
-        {
-            token outputs:mtlx:surface
-            token outputs:realitykit:vertex
-            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
-            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
-        }
-
         over "BookCover"
         {
-            color3f inputs:Color = (0.5807225, 0.06673408, 0) (
+            color3f inputs:Color = (0.20584641, 0.7898911, 0.4414427) (
                 colorSpace = "srgb_texture"
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-519.6758, 72.09375)
+                        float2 positionInSubgraph = (-571.0156, 74.66016)
                         float2 sizeInSubgraph = (133, 53)
                     }
                 }
             )
-            prepend token outputs:mtlx:surface.connect = </Moo_Notebook/Materials/BookCover/PreviewSurface.outputs:out>
+            prepend token outputs:mtlx:surface.connect = </Notebook/Materials/BookCover/PreviewSurface.outputs:out>
             token outputs:realitykit:vertex
-            token outputs:surface.connect = </Moo_Notebook/Materials/BookCover/BookCoverPreviewSurface.outputs:surface>
+            token outputs:surface.connect = </Notebook/Materials/BookCover/BookCoverPreviewSurface.outputs:surface>
             float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
 
@@ -66,7 +46,8 @@ def "Moo_Notebook" (
             def Shader "PreviewSurface"
             {
                 uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
-                color3f inputs:diffuseColor.connect = </Moo_Notebook/Materials/BookCover.inputs:Color>
+                color3f inputs:diffuseColor.connect = </Notebook/Materials/BookCover.inputs:Color>
+                float inputs:metallic
                 float inputs:roughness
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-255, 105)
@@ -74,20 +55,28 @@ def "Moo_Notebook" (
             }
         }
 
+        over "BookSide"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        }
+
         over "BookCoverTitle"
         {
-            color4f inputs:Color = (0.5807225, 0.06673408, 0, 1) (
+            color4f inputs:Color = (0.29484296, 0.29484296, 0.29484296, 0) (
                 colorSpace = "srgb_texture"
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-867.29297, 183.70312)
+                        float2 positionInSubgraph = (-809.3867, 121.55469)
                         float2 sizeInSubgraph = (133, 53)
                     }
                 }
             )
-            prepend token outputs:mtlx:surface.connect = </Moo_Notebook/Materials/BookCoverTitle/PreviewSurface.outputs:out>
+            prepend token outputs:mtlx:surface.connect = </Notebook/Materials/BookCoverTitle/PreviewSurface.outputs:out>
             token outputs:realitykit:vertex
-            token outputs:surface.connect = </Moo_Notebook/Materials/BookCoverTitle/BookCoverTitlePreviewSurface.outputs:surface>
+            token outputs:surface.connect = </Notebook/Materials/BookCoverTitle/BookCoverTitlePreviewSurface.outputs:surface>
             float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
 
@@ -95,37 +84,33 @@ def "Moo_Notebook" (
                 active = false
             )
             {
+                color3f inputs:diffuseColor = (0.12984204, 0.12984613, 0.12984395) (
+                    colorSpace = "srgb_texture"
+                )
             }
 
             def Shader "PreviewSurface"
             {
                 uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
-                float inputs:clearcoat
-                float inputs:clearcoatRoughness
-                color3f inputs:diffuseColor.connect = </Moo_Notebook/Materials/BookCoverTitle/Convert.outputs:out>
-                color3f inputs:emissiveColor.connect = None
-                float inputs:ior
+                color3f inputs:diffuseColor.connect = </Notebook/Materials/BookCoverTitle/Convert.outputs:out>
                 float inputs:metallic
-                float3 inputs:normal
-                float inputs:occlusion
-                float inputs:opacity
                 float inputs:roughness
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-255, 105)
-                float2 ui:nodegraph:node:size = (159.5, 307)
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                float2 ui:nodegraph:node:size = (148.5, 199)
             }
 
             def Shader "Over"
             {
                 uniform token info:id = "ND_over_color4"
-                color4f inputs:bg.connect = </Moo_Notebook/Materials/BookCoverTitle.inputs:Color>
-                color4f inputs:fg.connect = </Moo_Notebook/Materials/BookCoverTitle/Logo.outputs:out>
+                color4f inputs:bg.connect = </Notebook/Materials/BookCoverTitle.inputs:Color>
+                color4f inputs:fg.connect = </Notebook/Materials/BookCoverTitle/Logo.outputs:out>
                 float inputs:mix
                 color4f outputs:out
-                float2 ui:nodegraph:node:pos = (-621.2031, 44.234375)
+                float2 ui:nodegraph:node:pos = (-592.0703, 4.3007812)
                 float2 ui:nodegraph:node:size = (109, 145)
-                int ui:nodegraph:node:stackingOrder = 22
+                int ui:nodegraph:node:stackingOrder = 10
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
             }
 
             def Shader "Logo"
@@ -133,35 +118,22 @@ def "Moo_Notebook" (
                 uniform token info:id = "ND_image_color4"
                 asset inputs:file = @Frame 3.png@
                 string inputs:filtertype
-                float2 inputs:texcoord
                 string inputs:uaddressmode
                 string inputs:vaddressmode
                 color4f outputs:out
-                float2 ui:nodegraph:node:pos = (-882.01953, -31.472656)
+                float2 ui:nodegraph:node:pos = (-811.28516, -87.39844)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 41
+                int ui:nodegraph:node:stackingOrder = 8
             }
 
             def Shader "Convert"
             {
                 uniform token info:id = "ND_convert_color4_color3"
-                prepend color4f inputs:in.connect = </Moo_Notebook/Materials/BookCoverTitle/Over.outputs:out>
+                prepend color4f inputs:in.connect = </Notebook/Materials/BookCoverTitle/Over.outputs:out>
                 color3f outputs:out
-                float2 ui:nodegraph:node:pos = (-455.71484, 74.84766)
+                float2 ui:nodegraph:node:pos = (-437.89453, 30.433594)
                 float2 ui:nodegraph:node:size = (135.5, 40)
-                int ui:nodegraph:node:stackingOrder = 19
-            }
-        }
-    }
-
-    over "Notebook"
-    {
-        reorder nameChildren = ["BookTitle", "Notebook_geometry"]
-        over "BookTitle"
-        {
-            reorder nameChildren = ["BookTitle_geometry", "BookTitle_geometry_1"]
-            over "BookTitle_geometry"
-            {
+                int ui:nodegraph:node:stackingOrder = 13
             }
         }
     }
