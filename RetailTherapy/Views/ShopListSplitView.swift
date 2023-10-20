@@ -31,7 +31,7 @@ struct ShopListSplitView: View {
                     }
                 } else {
                     let columns = [
-                        GridItem(.adaptive(minimum: 200)),
+                        GridItem(.adaptive(minimum: 360)),
                     ]
                     
                     LazyVGrid(columns: columns, spacing: 20) {
@@ -51,14 +51,13 @@ struct ShopListSplitView: View {
                                         
                                         Text(scheme.name)
                                         
-                                        if isSelected {
-                                            Text("(Selected)")
-                                        }
+                                        Text("(Selected)")
+                                            .isHidden(!isSelected)
                                     }
+                                    .frame(height: 200)
                                     .padding()
                                 }
                                 .disabled(isSelected)
-                                .frame(height: 200)
                             }
                         }
                     }
@@ -93,5 +92,6 @@ struct ShopListSplitView: View {
 
 #Preview {
     ShopListSplitView()
+        .frame(minWidth: 800, idealWidth: 1000)
         .environment(StoreModel())
 }

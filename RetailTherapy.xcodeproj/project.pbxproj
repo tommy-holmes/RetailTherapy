@@ -14,6 +14,7 @@
 		A66FED772A6E9D0E00AAC4F6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FED762A6E9D0E00AAC4F6 /* Components.swift */; };
 		A6B4DD232ACF12E000DF30DC /* Lighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = A6B4DD222ACF12E000DF30DC /* Lighting.skybox */; };
 		A6E27E982AD6F31D00F9F37F /* ShopScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E27E972AD6F31D00F9F37F /* ShopScheme.swift */; };
+		A6E961502AE28E7600EB7A90 /* IsHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E9614F2AE28E7600EB7A90 /* IsHiddenModifier.swift */; };
 		A6FD78D42A6937B5004B2FFB /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = A6FD78D32A6937B5004B2FFB /* RealityKitContent */; };
 		A6FD78D62A6937B5004B2FFB /* RetailTherapyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */; };
 		A6FD78D82A6937B5004B2FFB /* ShopListSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD78D72A6937B5004B2FFB /* ShopListSplitView.swift */; };
@@ -30,6 +31,7 @@
 		A66FED762A6E9D0E00AAC4F6 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		A6B4DD222ACF12E000DF30DC /* Lighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = Lighting.skybox; sourceTree = "<group>"; };
 		A6E27E972AD6F31D00F9F37F /* ShopScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScheme.swift; sourceTree = "<group>"; };
+		A6E9614F2AE28E7600EB7A90 /* IsHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsHiddenModifier.swift; sourceTree = "<group>"; };
 		A6FD78CE2A6937B5004B2FFB /* RetailTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetailTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD78D22A6937B5004B2FFB /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		A6FD78D52A6937B5004B2FFB /* RetailTherapyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetailTherapyApp.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				A6FD78D72A6937B5004B2FFB /* ShopListSplitView.swift */,
 				A6FD78D92A6937B5004B2FFB /* ImmersiveView.swift */,
+				A6E961512AE28E7B00EB7A90 /* Modifiers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -88,6 +91,14 @@
 				A6FD78DF2A6937B6004B2FFB /* Preview Content */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A6E961512AE28E7B00EB7A90 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				A6E9614F2AE28E7600EB7A90 /* IsHiddenModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		A6FD78C52A6937B4004B2FFB = {
@@ -217,6 +228,7 @@
 				A6FD78DA2A6937B5004B2FFB /* ImmersiveView.swift in Sources */,
 				A66FED752A6E98E000AAC4F6 /* StoreModel.swift in Sources */,
 				A631EF1A2AB46B52000C6C28 /* ShopItemAttribute.swift in Sources */,
+				A6E961502AE28E7600EB7A90 /* IsHiddenModifier.swift in Sources */,
 				A6E27E982AD6F31D00F9F37F /* ShopScheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

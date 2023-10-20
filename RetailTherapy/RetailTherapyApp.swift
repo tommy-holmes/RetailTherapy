@@ -12,6 +12,7 @@ struct RetailTherapyApp: App {
     var body: some Scene {
         WindowGroup {
             ShopListSplitView()
+                .frame(minWidth: 800)
         }
         .environment(model)
 
