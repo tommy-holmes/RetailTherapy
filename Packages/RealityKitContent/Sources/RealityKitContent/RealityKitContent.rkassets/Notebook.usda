@@ -22,20 +22,22 @@ def "Notebook" (
     {
         over "BookCover"
         {
-            color3f inputs:Color = (0.20584641, 0.7898911, 0.4414427) (
+            color3f inputs:Color = (0.4549959, 0.78587574, 0.7898911) (
                 colorSpace = "srgb_texture"
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-571.0156, 74.66016)
+                        float2 positionInSubgraph = (-770.9336, 341.7539)
                         float2 sizeInSubgraph = (133, 53)
+                        int stackingOrderInSubgraph = 81
                     }
                 }
             )
-            prepend token outputs:mtlx:surface.connect = </Notebook/Materials/BookCover/PreviewSurface.outputs:out>
+            token outputs:mtlx:surface.connect = </Notebook/Materials/BookCover/PreviewSurface.outputs:out>
             token outputs:realitykit:vertex
             token outputs:surface.connect = </Notebook/Materials/BookCover/BookCoverPreviewSurface.outputs:surface>
             float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 72
 
             over "BookCoverPreviewSurface" (
                 active = false
@@ -43,15 +45,48 @@ def "Notebook" (
             {
             }
 
+            def Shader "Roughness"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Light Leather/TH_Leather_White_roughness.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-762.23047, -33.003906)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 74
+            }
+
             def Shader "PreviewSurface"
             {
                 uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
-                color3f inputs:diffuseColor.connect = </Notebook/Materials/BookCover.inputs:Color>
-                float inputs:metallic
-                float inputs:roughness
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = None
+                color3f inputs:emissiveColor.connect = </Notebook/Materials/BookCover.inputs:Color>
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal.connect = </Notebook/Materials/BookCover/Normal.outputs:out>
+                float inputs:occlusion
+                float inputs:opacity
+                float inputs:roughness.connect = </Notebook/Materials/BookCover/Roughness.outputs:out>
                 token outputs:out
                 float2 ui:nodegraph:node:pos = (-255, 105)
+                float2 ui:nodegraph:node:size = (159.5, 307)
+                int ui:nodegraph:node:stackingOrder = 72
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            def Shader "Normal"
+            {
+                uniform token info:id = "ND_image_vector3"
+                asset inputs:file = @Light Leather/TH_Leather_White_normal.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                float3 outputs:out
+                float2 ui:nodegraph:node:pos = (-762.60547, 177.73828)
                 float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 76
             }
         }
 

@@ -62,20 +62,6 @@ extension ShopItem {
             }
         }
     }
-    
-    static var whiskey: () async -> Self = {
-        try! await ShopItem(named: "Whiskey") {
-            Library.Entity(named: "cap") {
-                Library.Color(name: "Cap Colour")
-            }
-            Library.Entity(named: "neck") {
-                Library.Color(name: "Neck Colour")
-            }
-            Library.Entity(named: "body") {
-                Library.Color(name: "Body Colour")
-            }
-        }
-    }
 }
 
 struct Library { }

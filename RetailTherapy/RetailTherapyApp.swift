@@ -11,7 +11,7 @@ struct RetailTherapyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ShopListSplitView()
         }
         .environment(model)
 

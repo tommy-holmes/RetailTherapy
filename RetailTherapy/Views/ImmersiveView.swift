@@ -65,7 +65,6 @@ struct ImmersiveView: View {
         Task {
             let item: ShopItem = switch component.itemType {
             case .bottle: await .bottle()
-            case .whiskey: await .whiskey()
             case .notebook: await .notebook()
             case .mug: await .mug()
             }

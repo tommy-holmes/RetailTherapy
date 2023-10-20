@@ -251,25 +251,16 @@ def Xform "Store"
             def Shader "BaseColor"
             {
                 uniform token info:id = "ND_image_color3"
-                asset inputs:file = @Wallpaper/Retro_Mood_Mocca_Wallpaper_baseColor.png@
+                color3f inputs:default = (0.055229172, 0.48834085, 0.36402282) (
+                    colorSpace = "srgb_texture"
+                )
+                asset inputs:file
                 string inputs:filtertype
                 string inputs:vaddressmode
                 color3f outputs:out
                 float2 ui:nodegraph:node:pos = (-369.85547, -123.30469)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 30
-            }
-
-            def Shader "Mask"
-            {
-                uniform token info:id = "ND_image_float"
-                asset inputs:file = @Wallpaper/Retro_Mood_Mocca_Wallpaper_mask.png@
-                string inputs:filtertype
-                float outputs:out
-                float2 ui:nodegraph:node:pos = (-366.66406, 134.8086)
-                float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 31
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:default"]
+                int ui:nodegraph:node:stackingOrder = 34
             }
 
             def Shader "Normal"
@@ -281,7 +272,19 @@ def Xform "Store"
                 float3 outputs:out
                 float2 ui:nodegraph:node:pos = (-373.9375, 378.28125)
                 float2 ui:nodegraph:node:size = (148.5, 199)
-                int ui:nodegraph:node:stackingOrder = 32
+                int ui:nodegraph:node:stackingOrder = 33
+            }
+
+            def Shader "Mask"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Wallpaper/Retro_Mood_Mocca_Wallpaper_mask.png@
+                string inputs:filtertype
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-366.66406, 134.8086)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 33
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:default"]
             }
         }
 

@@ -2,7 +2,6 @@ import RealityKit
 
 public enum ItemType: String, Codable {
     case bottle
-    case whiskey
     case notebook
     case mug
 }
