@@ -4,6 +4,7 @@ public enum ItemType: String, Codable {
     case bottle
     case notebook
     case mug
+    case car
 }
 
 // Ensure you register this component in your app’s delegate using:

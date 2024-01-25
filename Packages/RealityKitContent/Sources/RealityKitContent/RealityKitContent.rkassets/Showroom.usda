@@ -1,0 +1,1470 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = "Showroom"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Showroom"
+{
+    reorder nameChildren = ["Floor", "Wall_1", "Wall_2", "Wall_3", "Car"]
+    def Xform "Car" (
+        active = true
+    )
+    {
+        def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
+        {
+            uniform token info:id = "RealityKitContent.CustomizableItemComponent"
+            token itemType = "car"
+        }
+    }
+
+    def Cube "Floor" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["Marble", "WoodPlank"]
+        rel material:binding = </Showroom/Floor/Marble> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        float3 xformOp:scale = (50, 2.220446e-16, 70)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "Marble"
+        {
+            token outputs:mtlx:surface.connect = </Showroom/Floor/Marble/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            def Shader "DefaultSurfaceShader" (
+                active = false
+            )
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat.connect = </Showroom/Floor/Marble/Mask.outputs:out>
+                float inputs:clearcoatRoughness.connect = None
+                color3f inputs:diffuseColor.connect = </Showroom/Floor/Marble/Base.outputs:out>
+                color3f inputs:emissiveColor.connect = </Showroom/Floor/Marble/Base.outputs:out>
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal.connect = </Showroom/Floor/Marble/Normal.outputs:out>
+                float inputs:occlusion
+                float inputs:opacity.connect = None
+                float inputs:roughness.connect = None
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (-255, 105)
+                float2 ui:nodegraph:node:size = (159.5, 307)
+                int ui:nodegraph:node:stackingOrder = 12
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            def Shader "Base"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 28
+            }
+
+            def Shader "Mask"
+            {
+                uniform token info:id = "ND_image_float"
+                asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                string inputs:filtertype
+                string inputs:vaddressmode
+                float outputs:out
+                float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 25
+            }
+
+            def Shader "Normal"
+            {
+                uniform token info:id = "ND_image_vector3"
+                asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                string inputs:filtertype
+                float2 inputs:texcoord
+                string inputs:uaddressmode
+                string inputs:vaddressmode
+                float3 outputs:out
+                float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                float2 ui:nodegraph:node:size = (148.5, 199)
+                int ui:nodegraph:node:stackingOrder = 23
+            }
+        }
+    }
+
+    def Xform "Wall_1" (
+        active = true
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cube "Wall_B" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (50, 10, 2.220446e-16)
+            float3 xformOp:translate = (0, 1, 7)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def "BlackSiliconeRubber" (
+                active = true
+                references = @BlackSiliconeRubber.usdz@
+            )
+            {
+                color3f inputs:Basecolor_Tint (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-45.51249, 49.172512)
+                            float2 sizeInSubgraph = (160.5, 53)
+                            int stackingOrderInSubgraph = 2269
+                        }
+                    }
+                )
+                float2 inputs:UV_Scale (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-725.2588, 351.55255)
+                            float2 sizeInSubgraph = (138.5, 53)
+                            int stackingOrderInSubgraph = 2272
+                        }
+                    }
+                )
+                token outputs:mtlx:surface.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/PreviewSurface.outputs:out>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                over "Mix"
+                {
+                    color3f inputs:bg.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Swizzle_1.outputs:out>
+                    color3f inputs:fg.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Multiply_1.outputs:out>
+                    float inputs:mix.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Swizzle.outputs:out>
+                    float2 ui:nodegraph:node:size = (109, 145)
+                }
+
+                over "Swizzle_1"
+                {
+                    color4f inputs:in.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/BaseColor.outputs:out>
+                    float2 ui:nodegraph:node:size = (145.5, 53)
+                }
+
+                over "Swizzle"
+                {
+                    color4f inputs:in.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/BaseColor.outputs:out>
+                    float2 ui:nodegraph:node:size = (133.5, 40)
+                }
+
+                over "Multiply_1"
+                {
+                    color3f inputs:in1.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber.inputs:Basecolor_Tint>
+                    color3f inputs:in2.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Swizzle_1.outputs:out>
+                    float2 ui:nodegraph:node:size = (60, 36)
+                }
+
+                over "Dot"
+                {
+                    float2 inputs:in.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber.inputs:UV_Scale>
+                    float2 ui:nodegraph:node:size = (44, 18)
+                }
+
+                over "multiply"
+                {
+                    float3 inputs:in1.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Normal.outputs:out>
+                    float2 ui:nodegraph:node:size = (60, 36)
+                }
+
+                over "add"
+                {
+                    float3 inputs:in1.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/multiply.outputs:out>
+                    float2 ui:nodegraph:node:size = (61.5, 36.5)
+                }
+
+                over "PreviewSurface"
+                {
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Mix.outputs:out>
+                    float inputs:metallic.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Metallic.outputs:out>
+                    float3 inputs:normal.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/add.outputs:out>
+                    float inputs:roughness.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Roughness.outputs:out>
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                }
+
+                over "Roughness"
+                {
+                    float2 inputs:uvtiling.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Dot.outputs:out>
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+
+                over "Metallic"
+                {
+                    float2 inputs:uvtiling.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Dot.outputs:out>
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+
+                over "Normal"
+                {
+                    float2 inputs:uvtiling.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Dot.outputs:out>
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+
+                over "BaseColor"
+                {
+                    float2 inputs:uvtiling.connect = </Showroom/Wall_1/Wall_B/BlackSiliconeRubber/Dot.outputs:out>
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+            }
+        }
+
+        def Cube "Wall_Panel" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_1/Wall_Panel/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (-4, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_1/Wall_Panel/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_1/Wall_Panel/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_1/Wall_Panel/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_1/Wall_Panel/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_1/Wall_Panel/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_1" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_1/Wall_Panel_1/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (-2, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_1/Wall_Panel_1/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_1/Wall_Panel_1/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_1/Wall_Panel_1/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_1/Wall_Panel_1/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_1/Wall_Panel_1/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_2" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_1/Wall_Panel_2/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (2, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_1/Wall_Panel_2/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_1/Wall_Panel_2/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_1/Wall_Panel_2/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_1/Wall_Panel_2/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_1/Wall_Panel_2/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_3" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_1/Wall_Panel_3/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (0, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_1/Wall_Panel_3/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_1/Wall_Panel_3/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_1/Wall_Panel_3/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_1/Wall_Panel_3/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_1/Wall_Panel_3/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_4" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_1/Wall_Panel_4/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (4, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_1/Wall_Panel_4/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_1/Wall_Panel_4/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_1/Wall_Panel_4/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_1/Wall_Panel_4/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_1/Wall_Panel_4/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+    }
+
+    def Xform "Wall_2" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+    )
+    {
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cube "Wall_B" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_2/Wall_B/BlackSiliconeRubber> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (50, 10, 2.220446e-16)
+            float3 xformOp:translate = (0, 1, 7)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def "BlackSiliconeRubber" (
+                active = true
+                references = @BlackSiliconeRubber.usdz@
+            )
+            {
+                color3f inputs:Basecolor_Tint (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-45.51249, 49.172512)
+                            float2 sizeInSubgraph = (160.5, 53)
+                            int stackingOrderInSubgraph = 2269
+                        }
+                    }
+                )
+                float2 inputs:UV_Scale (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-725.2588, 351.55255)
+                            float2 sizeInSubgraph = (138.5, 53)
+                            int stackingOrderInSubgraph = 2272
+                        }
+                    }
+                )
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                over "Mix"
+                {
+                    float2 ui:nodegraph:node:size = (109, 145)
+                }
+
+                over "Swizzle_1"
+                {
+                    float2 ui:nodegraph:node:size = (145.5, 53)
+                }
+
+                over "Swizzle"
+                {
+                    float2 ui:nodegraph:node:size = (133.5, 40)
+                }
+
+                over "Multiply_1"
+                {
+                    float2 ui:nodegraph:node:size = (60, 36)
+                }
+
+                over "Dot"
+                {
+                    float2 ui:nodegraph:node:size = (44, 18)
+                }
+
+                over "multiply"
+                {
+                    float2 ui:nodegraph:node:size = (60, 36)
+                }
+
+                over "add"
+                {
+                    float2 ui:nodegraph:node:size = (61.5, 36.5)
+                }
+
+                over "PreviewSurface"
+                {
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                }
+
+                over "Roughness"
+                {
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+
+                over "Metallic"
+                {
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+
+                over "Normal"
+                {
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+
+                over "BaseColor"
+                {
+                    float2 ui:nodegraph:node:size = (158.5, 235)
+                }
+            }
+        }
+
+        def Cube "Wall_Panel" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_2/Wall_Panel/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (-4, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_2/Wall_Panel/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_2/Wall_Panel/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_2/Wall_Panel/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_2/Wall_Panel/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_2/Wall_Panel/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_1" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_2/Wall_Panel_1/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (-2, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_2/Wall_Panel_1/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_2/Wall_Panel_1/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_2/Wall_Panel_1/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_2/Wall_Panel_1/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_2/Wall_Panel_1/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_2" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_2/Wall_Panel_2/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (2, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_2/Wall_Panel_2/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_2/Wall_Panel_2/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_2/Wall_Panel_2/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_2/Wall_Panel_2/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_2/Wall_Panel_2/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_3" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_2/Wall_Panel_3/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (0, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_2/Wall_Panel_3/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_2/Wall_Panel_3/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_2/Wall_Panel_3/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_2/Wall_Panel_3/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_2/Wall_Panel_3/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+
+        def Cube "Wall_Panel_4" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Showroom/Wall_2/Wall_Panel_4/Marble>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (9.5, 10, 2.220446e-16)
+            float3 xformOp:translate = (4, 1, 6.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Marble"
+            {
+                token outputs:mtlx:surface.connect = </Showroom/Wall_2/Wall_Panel_4/Marble/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Showroom/Floor/Marble/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "PreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = </Showroom/Wall_2/Wall_Panel_4/Marble/Mask.outputs:out>
+                    float inputs:clearcoatRoughness.connect = None
+                    color3f inputs:diffuseColor.connect = </Showroom/Wall_2/Wall_Panel_4/Marble/Base.outputs:out>
+                    color3f inputs:emissiveColor.connect = </Showroom/Wall_2/Wall_Panel_4/Marble/Base.outputs:out>
+                    float inputs:ior
+                    float inputs:metallic.connect = None
+                    float3 inputs:normal.connect = </Showroom/Wall_2/Wall_Panel_4/Marble/Normal.outputs:out>
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (159.5, 307)
+                    int ui:nodegraph:node:stackingOrder = 12
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+                }
+
+                def Shader "Base"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_baseColor.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-584.08984, -64.88281)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                }
+
+                def Shader "Mask"
+                {
+                    uniform token info:id = "ND_image_float"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_mask.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-589.0156, 365.46875)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 25
+                }
+
+                def Shader "Normal"
+                {
+                    uniform token info:id = "ND_image_vector3"
+                    asset inputs:file = @Floor/Oasis_Blue_Marble_1k_16b_zm1Gt0o/textures/Oasis_Blue_Marble_normal.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    float3 outputs:out
+                    float2 ui:nodegraph:node:pos = (-588.41406, 148.78125)
+                    float2 ui:nodegraph:node:size = (148.5, 199)
+                    int ui:nodegraph:node:stackingOrder = 23
+                }
+            }
+        }
+    }
+
+    def Cube "Wall_3" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Showroom/Wall_3/BlackSiliconeRubber> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        float3 xformOp:scale = (2.220446e-16, 10, 70)
+        float3 xformOp:translate = (5, 1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "BlackSiliconeRubber" (
+            active = true
+            references = @BlackSiliconeRubber.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-45.51249, 49.172512)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2269
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "Wall_4" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Showroom/Wall_4/BlackSiliconeRubber> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (2.220446e-16, 10, 70)
+        float3 xformOp:translate = (-5, 1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "BlackSiliconeRubber" (
+            active = true
+            references = @BlackSiliconeRubber.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-45.51249, 49.172512)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2269
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            token outputs:mtlx:surface.connect = </Showroom/Wall_4/BlackSiliconeRubber/PreviewSurface.outputs:out>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Mix"
+            {
+                color3f inputs:bg.connect = </Showroom/Wall_4/BlackSiliconeRubber/Swizzle_1.outputs:out>
+                color3f inputs:fg.connect = </Showroom/Wall_4/BlackSiliconeRubber/Multiply_1.outputs:out>
+                float inputs:mix.connect = </Showroom/Wall_4/BlackSiliconeRubber/Swizzle.outputs:out>
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle_1"
+            {
+                color4f inputs:in.connect = </Showroom/Wall_4/BlackSiliconeRubber/BaseColor.outputs:out>
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Swizzle"
+            {
+                color4f inputs:in.connect = </Showroom/Wall_4/BlackSiliconeRubber/BaseColor.outputs:out>
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Multiply_1"
+            {
+                color3f inputs:in1.connect = </Showroom/Wall_4/BlackSiliconeRubber.inputs:Basecolor_Tint>
+                color3f inputs:in2.connect = </Showroom/Wall_4/BlackSiliconeRubber/Swizzle_1.outputs:out>
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Dot"
+            {
+                float2 inputs:in.connect = </Showroom/Wall_4/BlackSiliconeRubber.inputs:UV_Scale>
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float3 inputs:in1.connect = </Showroom/Wall_4/BlackSiliconeRubber/Normal.outputs:out>
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float3 inputs:in1.connect = </Showroom/Wall_4/BlackSiliconeRubber/multiply.outputs:out>
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                color3f inputs:diffuseColor.connect = </Showroom/Wall_4/BlackSiliconeRubber/Mix.outputs:out>
+                float inputs:metallic.connect = </Showroom/Wall_4/BlackSiliconeRubber/Metallic.outputs:out>
+                float3 inputs:normal.connect = </Showroom/Wall_4/BlackSiliconeRubber/add.outputs:out>
+                float inputs:roughness.connect = </Showroom/Wall_4/BlackSiliconeRubber/Roughness.outputs:out>
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Roughness"
+            {
+                float2 inputs:uvtiling.connect = </Showroom/Wall_4/BlackSiliconeRubber/Dot.outputs:out>
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 inputs:uvtiling.connect = </Showroom/Wall_4/BlackSiliconeRubber/Dot.outputs:out>
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 inputs:uvtiling.connect = </Showroom/Wall_4/BlackSiliconeRubber/Dot.outputs:out>
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "BaseColor"
+            {
+                float2 inputs:uvtiling.connect = </Showroom/Wall_4/BlackSiliconeRubber/Dot.outputs:out>
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+}
+

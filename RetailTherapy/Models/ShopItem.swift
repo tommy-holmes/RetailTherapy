@@ -62,6 +62,12 @@ extension ShopItem {
             }
         }
     }
+    
+    static var car: () async -> Self = {
+        try! await ShopItem(named: "Car") {
+            
+        }
+    }
 }
 
 struct Library { }

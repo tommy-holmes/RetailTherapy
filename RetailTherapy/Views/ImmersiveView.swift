@@ -21,7 +21,7 @@ struct ImmersiveView: View {
                     createItemModel(for: event.entity)
                 })
                 
-                let storeEntity = try await Entity(named: "Shop", in: realityKitContentBundle)
+                let storeEntity = try await Entity(named: "Showroom", in: realityKitContentBundle)
                 
                 model.rootEntity = storeEntity
                 
@@ -67,6 +67,7 @@ struct ImmersiveView: View {
             case .bottle: await .bottle()
             case .notebook: await .notebook()
             case .mug: await .mug()
+            case .car: await .car()
             }
             await entity.children.append(item.entity)
             model.items.append(item)
