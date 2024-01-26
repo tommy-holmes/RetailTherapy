@@ -64,8 +64,16 @@ extension ShopItem {
     }
     
     static var car: () async -> Self = {
-        try! await ShopItem(named: "Car") {
-            
+        try! await ShopItem(named: "P1") {
+            Library.Entity(named: "Paintjob") {
+                Library.Color(name: "Paintjob")
+            }
+            Library.Entity(named: "Interior") {
+                Library.Color(name: "Interior")
+            }
+            Library.Entity(named: "Seats") {
+                Library.Color(name: "Seats")
+            }
         }
     }
 }

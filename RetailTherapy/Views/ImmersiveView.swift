@@ -43,7 +43,7 @@ struct ImmersiveView: View {
                 guard let attachmentEntity = attatchments.entity(for: component.attachmentTag) else { return }
                 
                 model.rootEntity?.addChild(attachmentEntity)
-                attachmentEntity.setPosition([0, 0.75, 0], relativeTo: entity)
+                attachmentEntity.setPosition([0, 1.75, 0], relativeTo: entity)
             }
             
         } attachments: {

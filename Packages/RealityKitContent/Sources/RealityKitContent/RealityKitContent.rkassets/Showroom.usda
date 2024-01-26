@@ -15,6 +15,9 @@ def Xform "Showroom"
         active = true
     )
     {
+        float3 xformOp:translate = (-2, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
         def RealityKitCustomComponent "RealityKitContent_CustomizableItemComponent"
         {
             uniform token info:id = "RealityKitContent.CustomizableItemComponent"
